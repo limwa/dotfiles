@@ -1,9 +1,11 @@
 {user, ...}: {
   # Bluetooth Audio
   # https://nixos.wiki/wiki/Bluetooth
+  imports = [./.];
 
   hardware.bluetooth = {
     enable = true;
+
     settings = {
       General = {
         # https://askubuntu.com/questions/676853/bluetooth-headset-with-poor-sound-quality-on-ubuntu

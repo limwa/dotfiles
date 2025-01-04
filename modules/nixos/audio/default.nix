@@ -22,6 +22,8 @@
           "bluez5.roles" = [
             "hsp_hs"
             "hsp_ag"
+            "hfp_hf"
+            "hfp_ag"
             "a2dp_sink"
             "a2dp_source"
             "bap_sink"
