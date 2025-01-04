@@ -53,6 +53,7 @@
           git diff --staged '*.nix'
 
           echo "NixOS Rebuilding..."
+          echo
           sudo nixos-rebuild switch --flake .#
 
           # Generate commit message
@@ -63,7 +64,8 @@
           git tag -af -m "$HOST" "$HOST"
 
           # Update remote
-          git push -q --all
+          git push -q
+          git push -q --tags --force
 
           # Notify all OK!
           notify-send -e "NixOS succesfuly rebuilt!" --icon=software-update-available
