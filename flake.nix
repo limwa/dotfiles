@@ -67,6 +67,7 @@
       nixosConfigurations = let
         commonModules = [
           disko.nixosModules.disko
+          ./modules/nixos/audio
           ./modules/nixos/desktop/gnome
           ./modules/nixos/development/adb.nix
           ./modules/nixos/development/ccache.nix
@@ -78,7 +79,6 @@
           ./modules/nixos/virtualization/docker
           ./modules/nixos/virtualization/libvirt.nix
           ./modules/nixos/virtualization/virtualbox.nix
-          ./modules/nixos/audio.nix
           ./modules/nixos/bootloader.nix
           ./modules/nixos/common.nix
           ./modules/nixos/dynamic-binaries.nix

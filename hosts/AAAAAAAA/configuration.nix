@@ -4,6 +4,7 @@
     ./disk-configuration.nix
     ./state-configuration.nix
 
+    ../../modules/nixos/audio/bluetooth.nix
     ../../modules/nixos/hardware/graphics/amdgpu.nix
     ../../modules/nixos/hardware/graphics/nvidia.nix
     ../../modules/nixos/virtualization/docker/btrfs.nix
