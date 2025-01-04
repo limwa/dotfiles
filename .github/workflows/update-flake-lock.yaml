@@ -1,0 +1,27 @@
+name: Update flake dependencies
+on:
+  workflow_dispatch: # Allows manual triggering
+  schedule:
+    - cron: '27 18 * * 1-5' # At 18:27 UTC every weekday
+
+jobs:
+  create-pr:
+    name: Create Pull Request
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+      - name: Update flake.lock
+        uses: DeterminateSystems/update-flake-lock@main
+        with:
+          # https://github.com/DeterminateSystems/update-flake-lock?tab=readme-ov-file#with-a-personal-authentication-token
+          # Token needed so it can trigger the check workflow
+          # Also see https://github.com/orgs/community/discussions/65321
+          token: ${{ github.token }}
+          commit-msg: "build: update flake.lock"   # Commit message to be used
+          pr-title: "build: update flake.lock" # Title of PR to be created
