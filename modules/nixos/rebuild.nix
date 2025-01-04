@@ -38,6 +38,8 @@
           # Only rebuild if there are new commits OR there are staged changes
           if [ "$last_built_commit" == "$current_commit" ] && git diff --staged --quiet; then
             echo "No new changes detected, exiting."
+            echo
+
             popd
             exit 0
           fi
@@ -53,7 +55,7 @@
           # Show changes
           git diff --staged '*.nix'
 
-          echo "NixOS Rebuilding..."
+          echo "Rebuilding NixOS..."
 
           echo
           sudo nixos-rebuild switch --flake .#
