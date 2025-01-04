@@ -63,7 +63,7 @@
           git tag -af -m "$HOST" "$HOST"
 
           # Update remote
-          git push -q --tags
+          git push -q --all
 
           # Notify all OK!
           notify-send -e "NixOS succesfuly rebuilt!" --icon=software-update-available
