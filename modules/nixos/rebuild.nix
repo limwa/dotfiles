@@ -19,6 +19,7 @@
         text = ''
           # Go to the config directory
           pushd ~/dotfiles/
+          echo
 
           # Sync local repository with remote changes
           git stash push -qu
@@ -53,8 +54,10 @@
           git diff --staged '*.nix'
 
           echo "NixOS Rebuilding..."
+
           echo
           sudo nixos-rebuild switch --flake .#
+          echo
 
           # Generate commit message
           message=$(nixos-rebuild list-generations --json | yq -p=json ".[] | select(.current == true) | \"rebuild($HOST): generation \(.generation), NixOS \(.nixosVersion) with Linux Kernel \(.kernelVersion)\"")
@@ -71,6 +74,7 @@
           notify-send -e "NixOS succesfuly rebuilt!" --icon=software-update-available
 
           # Back to where you were
+          echo
           popd
         '';
       }
