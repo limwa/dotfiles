@@ -2,7 +2,7 @@ name: Update flake dependencies
 on:
   workflow_dispatch: # Allows manual triggering
   schedule:
-    - cron: '27 18 * * 1-5' # At 18:27 UTC every weekday
+    - cron: '43 6 * * *' # At 6:43 UTC every day
 
 jobs:
   create-pr:
