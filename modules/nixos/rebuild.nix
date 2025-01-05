@@ -22,11 +22,12 @@
           echo
 
           # Sync local repository with remote changes
+          git stash clear
           git stash push -qu
           trap "git stash pop -q --index" EXIT
           git pull -q --no-autostash
           trap - EXIT
-          git stash pop -q --index
+          git stash pop -q --index || true
 
           # Get the name of the host
           HOST=$(hostname)
@@ -45,6 +46,7 @@
           fi
 
           # Remove any changes that were not added to the index
+          git stash clear
           git stash push -qku
           trap "git stash pop -q" EXIT
 
