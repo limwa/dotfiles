@@ -71,6 +71,7 @@
           ./modules/nixos/desktop/gnome
           ./modules/nixos/development/adb.nix
           ./modules/nixos/development/ccache.nix
+          ./modules/nixos/development/documentation.nix
           ./modules/nixos/development/nixd.nix
           ./modules/nixos/hardware/firmware.nix
           ./modules/nixos/hardware/printing.nix

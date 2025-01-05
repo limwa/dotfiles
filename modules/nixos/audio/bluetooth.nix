@@ -12,8 +12,9 @@
         AutoConnect = true;
         MultiProfile = "multiple";
 
-        # Show battery level of headset.
+        # Enable experimental features.
         Experimental = true;
+        KernelExperimental = true;
       };
     };
   };
