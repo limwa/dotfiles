@@ -25,4 +25,4 @@ jobs:
           token: ${{ github.token }}
           commit-msg: "build: update flake.lock"   # Commit message to be used
           pr-title: "build: update flake.lock" # Title of PR to be created
-          pr-reviewers: limwa # Assign reviewers
+          pr-assignees: limwa # Assign me to the PR
