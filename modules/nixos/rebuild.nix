@@ -67,7 +67,7 @@
           message=$(nixos-rebuild list-generations --json | yq -p=json ".[] | select(.current == true) | \"rebuild($HOST): generation \(.generation), NixOS \(.nixosVersion) with Linux Kernel \(.kernelVersion)\"")
 
           # Commit all changes witih the generation metadata
-          git commit -m "$message" --allow-empty
+          git commit -m "$message" || true
           git tag -af -m "$HOST" "$HOST"
 
           # Update remote
