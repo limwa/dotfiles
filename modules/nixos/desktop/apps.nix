@@ -10,7 +10,7 @@
   users.users.${user.login}.packages = with pkgs; [
     discord
     eclipses.eclipse-modeling
-    ghostty
+    warp-terminal
     google-chrome
     gthumb
     imagemagick
