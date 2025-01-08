@@ -71,7 +71,9 @@
           git tag -af -m "$HOST" "$HOST"
 
           # No need to keep the changes stashed
+          # and we need to unstash them before popd
           trap - EXIT
+          git stash pop -q || true
 
           # Update remote
           git push -q
