@@ -70,6 +70,9 @@
           git commit -m "$message" || true
           git tag -af -m "$HOST" "$HOST"
 
+          # No need to keep the changes stashed
+          trap - EXIT
+
           # Update remote
           git push -q
           git push -q --tags --force
