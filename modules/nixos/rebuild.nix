@@ -8,8 +8,18 @@
       # This script will take only the changes that were added to the Git
       # index and try to rebuild the system with them.
       # If the rebuild is successful, it will commit the changes.
-      pkgs.writeShellApplication {
+      pkgs.writeShellApplication rec {
         name = "system-rebuild";
+
+        derivationArgs = {
+          pname = "limwa-dotfiles-${name}";
+          version = "1.0.0";
+        };
+
+        meta = {
+          description = "Rebuild NixOS system with changes from Git";
+          license = pkgs.lib.licenses.mit;
+        };
 
         runtimeInputs = with pkgs; [
           libnotify
