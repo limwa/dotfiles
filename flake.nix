@@ -97,6 +97,7 @@
           ./modules/home-manager/bat.nix
           ./modules/home-manager/direnv.nix
           ./modules/home-manager/git.nix
+          ./modules/home-manager/vps.nix
           ./modules/home-manager/zsh.nix
         ];
 
