@@ -14,9 +14,15 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          fetch-tags: true
+
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@main
+
       - name: Update flake.lock
+        id: update
         uses: DeterminateSystems/update-flake-lock@main
         with:
           # https://github.com/DeterminateSystems/update-flake-lock?tab=readme-ov-file#with-a-personal-authentication-token
@@ -26,3 +32,34 @@ jobs:
           commit-msg: "build: update flake.lock"   # Commit message to be used
           pr-title: "build: update flake.lock" # Title of PR to be created
           pr-assignees: limwa # Assign me to the PR
+      
+      - name: Create placeholder summary comment
+        uses: thollander/actions-comment-pull-request@v3
+        with:
+          pr-number: ${{ steps.update.outputs.pull-request-number }}
+          comment-tag: update_summary
+          message: |
+            # Package Changes
+
+            I'm still computing the package changes for this update. Please hang on! :grin:
+
+      - name: Create update summary
+        run: nix run .#create-update-summary
+
+      - name: Upload update summary as comment
+        uses: thollander/actions-comment-pull-request@v3
+        with:
+          pr-number: ${{ steps.update.outputs.pull-request-number }}
+          comment-tag: update_summary
+          file-path: summary.md
+
+      - name: On error, notify user in summary comment
+        if : ${{ failure() }}
+        uses: thollander/actions-comment-pull-request@v3
+        with:
+          pr-number: ${{ steps.update.outputs.pull-request-number }}
+          comment-tag: update_summary
+          message: |
+            # Package Changes
+
+            Unfortunately, I wasn't able to compute the package changes for this update. Please check the action log for more information. :pensive:
