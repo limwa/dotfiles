@@ -204,6 +204,7 @@
           ./modules/nixos/virtualization/virtualbox.nix
           ./modules/nixos/bootloader.nix
           ./modules/nixos/common.nix
+          ./modules/nixos/dns-over-tls.nix
           ./modules/nixos/dynamic-binaries.nix
           ./modules/nixos/flatpak.nix
           ./modules/nixos/fonts.nix
