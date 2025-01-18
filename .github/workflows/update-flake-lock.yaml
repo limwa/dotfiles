@@ -25,10 +25,6 @@ jobs:
         id: update
         uses: DeterminateSystems/update-flake-lock@main
         with:
-          # https://github.com/DeterminateSystems/update-flake-lock?tab=readme-ov-file#with-a-personal-authentication-token
-          # Token needed so it can trigger the check workflow
-          # Also see https://github.com/orgs/community/discussions/65321
-          token: ${{ github.token }}
           commit-msg: "build: update flake.lock"   # Commit message to be used
           pr-title: "build: update flake.lock" # Title of PR to be created
           pr-assignees: limwa # Assign me to the PR
@@ -42,6 +38,9 @@ jobs:
             # Package Changes
 
             I'm still computing the package changes for this update. Please hang on! :grin:
+
+      - name: Merge update branch with main
+        run: git merge --ff-only origin/update_flake_lock_action
 
       - name: Create update summary
         run: nix run .#create-update-summary

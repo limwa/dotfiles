@@ -51,8 +51,6 @@
 
             runtimeInputs = with pkgs; [
               yq-go
-              nixos-rebuild
-              nvd
             ];
 
             text = ''
@@ -60,7 +58,7 @@
               pushd "$flake_dir"
 
               build_dir="$(mktemp -d)"
-              # trap 'rm -rf "$build_dir"' EXIT
+              trap 'rm -rf "$build_dir"' EXIT
 
               # Create a summary file
               summary_file="$build_dir/summary.md"
@@ -72,7 +70,7 @@
 
               # For all available hosts, the script will try to build their
               # current and new configurations, as well as output the
-              # differences between them, if any, as output by `nvd`.
+              # differences between them, if any.
 
               current_config_ref="$(git rev-parse --abbrev-ref HEAD)"
               current_config_commit="$(git rev-parse "$current_config_ref")"
