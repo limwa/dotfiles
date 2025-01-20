@@ -187,7 +187,7 @@
 
         secrets = [];
 
-        wireguard.port = 5900;
+        wireguard.port = "5900";
       };
 
       meta = {
@@ -224,6 +224,7 @@
           ./modules/nixos/nix.nix
           ./modules/nixos/rebuild.nix
           ./modules/nixos/user.nix
+          ./modules/nixos/wireguard.nix
           ./modules/home-manager/p10k
           ./modules/home-manager/bat.nix
           ./modules/home-manager/direnv.nix
