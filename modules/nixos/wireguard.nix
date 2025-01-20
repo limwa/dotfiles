@@ -1,7 +1,12 @@
-{wireguard, ...}: {
+{
+  pkgs,
+  wireguard,
+  ...
+}: {
   # Wireguard
   # https://wiki.nixos.org/wiki/WireGuard#Setting_up_WireGuard_with_NetworkManager
 
+  environment.systemPackages = [pkgs.reaction];
   networking.firewall = {
     # if packets are still dropped, they will show up in dmesg
     logReversePathDrops = true;
