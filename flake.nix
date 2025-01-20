@@ -185,9 +185,7 @@
           signingKey = "C897FE7F98151B542F969177F55F5AE242E116E4";
         };
 
-        secrets = [
-          "wg-AAAAAAAA"
-        ];
+        secrets = [];
       };
 
       meta = {

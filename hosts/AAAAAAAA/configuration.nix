@@ -12,7 +12,6 @@
     ../../modules/nixos/virtualization/docker/nvidia.nix
     ../../modules/nixos/secureboot/enforce.nix
     ./modules/hardware.nix
-    ./modules/wireguard.nix
   ];
 
   networking.hostName = "AAAAAAAA";
