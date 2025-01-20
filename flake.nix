@@ -8,6 +8,10 @@
     # Nixpkgs (NixOS stable)
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
 
+    # Agenix
+    agenix.url = "github:ryantm/agenix";
+    agenix.inputs.nixpkgs.follows = "nixpkgs";
+
     # Disko
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
@@ -180,6 +184,10 @@
           displayName = "André Lima";
           signingKey = "C897FE7F98151B542F969177F55F5AE242E116E4";
         };
+
+        secrets = [
+          "wg-AAAAAAAA"
+        ];
       };
 
       meta = {
