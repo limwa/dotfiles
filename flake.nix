@@ -186,6 +186,8 @@
         };
 
         secrets = [];
+
+        wireguard.port = 5900;
       };
 
       meta = {
