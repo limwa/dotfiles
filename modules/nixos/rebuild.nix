@@ -32,7 +32,7 @@
         get_options() {
           getopt -n "${name}" \
             -o h -l help \
-                 -l always-rebuild \
+            -o f -l force \
             -- "$@"
         }
 
