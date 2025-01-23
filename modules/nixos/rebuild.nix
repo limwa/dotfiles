@@ -72,7 +72,8 @@
         echo "Rebuilding NixOS..."
 
         echo
-        sudo nixos-rebuild switch --flake .#
+        sudo nixos-rebuild boot --flake .#
+        sudo nixos-rebuild switch --flake .# || true
         echo
 
         # Generate commit message

@@ -177,6 +177,7 @@
 
         usePortugueseKeyboard = true;
         useEpsonDrivers = true;
+        useLatestKernel = true;
 
         user = {
           login = "lima";
@@ -253,11 +254,6 @@
           nixpkgs-overlay-add-unfree-and-stable = {
             nixpkgs.overlays = [
               (final: prev: {
-                # unfree = import nixpkgs {
-                #   inherit system;
-                #   config.allowUnfree = true;
-                # };
-
                 stable = import nixpkgs-stable {
                   inherit system;
                   config.allowUnfree = true;
@@ -295,7 +291,7 @@
           ];
 
           specialArgs = {
-            useEpsonDrivers = true;
+            useLatestKernel = false;
           };
         };
       };
