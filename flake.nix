@@ -24,7 +24,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # Lanzaboote (doesn't follow nixpkgs to ensure stability)
-    lanzaboote.url = "github:nix-community/lanzaboote/v0.4.1";
+    lanzaboote.url = "github:nix-community/lanzaboote/v0.4.2";
     # lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
 
     # Nix Alien (doesn't follow nixpkgs to ensure index is accurate)
