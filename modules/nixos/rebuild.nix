@@ -117,7 +117,7 @@
         unstash_staged() {
           echo ">> unstash staged"
 
-          git cherry-pick "$RESERVED_BRANCH^^" # staged
+          git cherry-pick --allow-empty "$RESERVED_BRANCH^^" # staged
 
           checkout_reserved_branch
           git rebase "$CURRENT_BRANCH"
