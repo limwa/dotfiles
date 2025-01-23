@@ -54,7 +54,7 @@
                 echo
                 exit 0
                 ;;
-            --f|--force)
+            -f|--force)
                 shift
                 REBUILD_FORCE=true
                 ;;
