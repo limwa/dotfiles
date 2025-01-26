@@ -5,12 +5,8 @@
 
   # Fix for L2TP VPN crashing when establishing connection.
   networking.networkmanager.enableStrongSwan = true;
-  services.strongswan = {
-    enable = true;
-    secrets = [
-      "ipsec.d/ipsec.nm-l2tp.secrets"
-    ];
-  };
+  services.strongswan.enable = true;
+  environment.etc."strongswan.conf".text = "";
 
   # Enable Tailscale.
   services.tailscale.enable = true;
