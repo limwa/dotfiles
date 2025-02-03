@@ -21,8 +21,15 @@
       };
     };
 
-    with-x11.configuration = {
-      hardware.nvidia.powerManagement.finegrained = lib.mkForce false;
+    with-sync.configuration = {
+      hardware.nvidia = {
+        prime = {
+          offload.enable = lib.mkForce false;
+          sync.enable = lib.mkForce true;
+        };
+
+        powerManagement.finegrained = lib.mkForce false;
+      };
     };
   };
 }
