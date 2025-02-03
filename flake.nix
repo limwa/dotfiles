@@ -178,7 +178,6 @@
         usePortugueseKeyboard = true;
         useEpsonDrivers = true;
         useLatestKernel = true;
-        useProprietaryDrivers = false;
 
         user = {
           login = "lima";
@@ -293,7 +292,6 @@
 
           specialArgs = {
             # useLatestKernel = false;
-            useProprietaryDrivers = true;
           };
         };
       };

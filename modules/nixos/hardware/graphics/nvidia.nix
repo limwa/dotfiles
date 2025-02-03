@@ -1,7 +1,6 @@
 {
   config,
   lib,
-  useProprietaryDrivers,
   ...
 }: {
   # Nvidia
@@ -14,10 +13,6 @@
   # Use the beta NVIDIA drivers. Stable drivers are available too.
   hardware.nvidia = {
     package = config.boot.kernelPackages.nvidiaPackages.beta;
-    open =
-      if useProprietaryDrivers
-      then false
-      else null;
   };
 
   # Create specializations for Sync and Reverse Sync modes.
