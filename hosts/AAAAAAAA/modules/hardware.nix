@@ -29,5 +29,5 @@ in {
   };
 
   # √(1920² + 1080²) px / 15.60 in ≃ 141 dpi
-  services.xserver.dpi = 141;
+  # services.xserver.dpi = 141;
 }
