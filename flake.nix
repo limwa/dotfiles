@@ -291,7 +291,7 @@
           ];
 
           specialArgs = {
-            # useLatestKernel = false;
+            useLatestKernel = false;
           };
         };
       };
