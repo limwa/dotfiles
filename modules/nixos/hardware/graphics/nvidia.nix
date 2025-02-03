@@ -11,16 +11,18 @@
   nixpkgs.config.allowUnfree = true;
 
   # Use the beta NVIDIA drivers. Stable drivers are available too.
-  hardware.nvidia = {
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
-  };
+  hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
 
   # Create specializations for Sync and Reverse Sync modes.
   specialisation = lib.mkIf (config.hardware.nvidia.prime.offload.enable) {
     with-reverse-sync.configuration = {
       hardware.nvidia.prime = {
-        reverseSync.enable = true;
+        reverseSync.enable = lib.mkForce true;
       };
+    };
+
+    with-x11.configuration = {
+      hardware.nvidia.powerManagement.finegrained = lib.mkForce false;
     };
   };
 }
