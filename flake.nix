@@ -292,7 +292,7 @@
           ];
 
           specialArgs = {
-            useLatestKernel = true;
+            # useLatestKernel = false;
             useProprietaryDrivers = true;
           };
         };
