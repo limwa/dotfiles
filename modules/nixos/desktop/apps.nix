@@ -21,7 +21,8 @@
     spotify
     vscode
     yt-dlp
-    stable.zoom-us
+    zed-editor
+    zoom-us
     zotero
   ];
 }
