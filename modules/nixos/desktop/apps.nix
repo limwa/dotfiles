@@ -22,7 +22,6 @@
     vscode
     yt-dlp
     zed-editor
-    zoom-us
     zotero
   ];
 }
