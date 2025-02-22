@@ -26,6 +26,7 @@
 
     gnomeExtensions.astra-monitor
     gnomeExtensions.dash-to-dock
+    gnomeExtensions.gsconnect
     gnomeExtensions.media-controls
   ];
 }
