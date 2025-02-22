@@ -218,6 +218,7 @@
           ./modules/nixos/flatpak.nix
           ./modules/nixos/fonts.nix
           ./modules/nixos/home-manager.nix
+          ./modules/nixos/kde-connect.nix
           ./modules/nixos/kernel.nix
           ./modules/nixos/keyboard.nix
           ./modules/nixos/locale.nix
