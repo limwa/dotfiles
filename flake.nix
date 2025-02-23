@@ -199,6 +199,7 @@
         commonModules = [
           disko.nixosModules.disko
           ./modules/nixos/audio
+          ./modules/nixos/audio/soundwire.nix
           ./modules/nixos/desktop/gnome
           ./modules/nixos/development/adb.nix
           ./modules/nixos/development/ccache.nix

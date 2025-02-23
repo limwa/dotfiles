@@ -1,4 +1,4 @@
-{pkgs, ...}: {
+{
   # PipeWire
   # https://nixos.wiki/wiki/PipeWire
 
@@ -34,8 +34,4 @@
       };
     };
   };
-
-  environment.systemPackages = with pkgs; [
-    soundwireserver
-  ];
 }
