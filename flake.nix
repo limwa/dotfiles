@@ -233,6 +233,7 @@
           ./modules/home-manager/direnv.nix
           ./modules/home-manager/git.nix
           ./modules/home-manager/zsh.nix
+          ./packages/overlay.nix
         ];
 
         mkSystem = system: attrs: let
