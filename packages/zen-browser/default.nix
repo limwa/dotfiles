@@ -3,8 +3,8 @@
   version = "latest";
 
   src = pkgs.fetchurl {
-    url = "https://github.com/zen-browser/desktop/releases/latest/download/zen-x86_64.AppImage";
-    sha256 = "sha256-1s5T9adpo55cLk+ECaiYtZCEQtuAkmr7/4IuxRfsL4U=";
+    url = "https://github.com/zen-browser/desktop/releases/download/1.8.2b/zen-x86_64.AppImage";
+    sha256 = "sha256-hZiJ8JLzLhtD1W8DAso3yBAJYhFE+nJEbQJa59AWjnU=";
   };
 
   appimageContents = pkgs.appimageTools.extract {

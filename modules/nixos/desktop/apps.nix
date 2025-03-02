@@ -23,6 +23,7 @@
     vscode
     yt-dlp
     zed-editor
+    zen-browser
     zotero
   ];
 }
