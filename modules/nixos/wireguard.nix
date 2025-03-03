@@ -17,7 +17,8 @@
     useNetworkd = true;
 
     firewall = {
-      checkReversePath = "loose";
+      checkReversePath = false;
+
       # if packets are still dropped, they will show up in dmesg
       logReversePathDrops = true;
 
