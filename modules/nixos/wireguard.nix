@@ -17,6 +17,7 @@
     useNetworkd = true;
 
     firewall = {
+      enable = false;
       checkReversePath = false;
 
       # if packets are still dropped, they will show up in dmesg
