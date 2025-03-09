@@ -27,5 +27,11 @@
       dates = "daily";
       options = "--delete-older-than 14d";
     };
+
+    # Optimize the Nix store by deduplicating store paths.
+    optimise = {
+      automatic = true;
+      dates = ["daily"];
+    };
   };
 }
