@@ -2,6 +2,7 @@
   stdenv,
   fetchurl,
   lib,
+  wrapGAppsHook3,
   cpio,
   rpm,
   cairo,
@@ -11,7 +12,6 @@
   gtksourceview,
   json-glib,
   krb5,
-  libgcc,
   libgee,
   libsecret,
   pango,
@@ -28,7 +28,6 @@
       gtksourceview
       json-glib
       krb5.lib
-      #libgcc
       libgee
       libsecret
       pango
@@ -54,8 +53,8 @@ in
     inherit src;
 
     nativeBuildInputs = [
-      # wrapGAppsHook
-      # glib # For setup hook populating GSETTINGS_SCHEMA_PATH
+      wrapGAppsHook3
+      glib # For setup hook populating GSETTINGS_SCHEMA_PATH
     ];
 
     buildInputs = [
@@ -63,7 +62,6 @@ in
       rpm
     ];
 
-    # dontUnpack = true;
     unpackPhase = ''
       mkdir -p $out
       rpm2cpio $src | cpio -idmv -D $out
