@@ -1,7 +1,10 @@
 {
   nixpkgs.overlays = [
     (final: prev: {
-      zen-browser = final.callPackage ./zen-browser {};
+      custom = {
+        tableplus = final.callPackage ./tableplus {};
+        zen-browser = final.callPackage ./zen-browser {};
+      };
     })
   ];
 }
