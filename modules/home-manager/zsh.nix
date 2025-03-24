@@ -25,7 +25,7 @@
           "ohmyzsh/ohmyzsh path:plugins/deno"
           # "ohmyzsh/ohmyzsh path:plugins/docker"
           # "ohmyzsh/ohmyzsh path:plugins/flutter"
-          "ohmyzsh/ohmyzsh path:plugins/gh"
+          # "ohmyzsh/ohmyzsh path:plugins/gh"
           "ohmyzsh/ohmyzsh path:plugins/kubectl"
           # "ohmyzsh/ohmyzsh path:plugins/asdf"
           "ohmyzsh/ohmyzsh path:plugins/command-not-found"
