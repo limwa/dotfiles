@@ -14,7 +14,6 @@ in {
     "${nixos-hardware}/common/pc/ssd"
   ];
 
-  boot.initrd.kernelModules = ["amdgpu"];
   services.xserver.videoDrivers = ["nvidia"];
 
   hardware.nvidia = {
