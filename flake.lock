@@ -309,6 +309,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-donteatoreo": {
+      "locked": {
+        "lastModified": 1743951844,
+        "narHash": "sha256-4K87wWG0wJiq9U5pd1c42mBooVuTs/+bnq1SCqnH4Ak=",
+        "owner": "donteatoreo",
+        "repo": "nixpkgs",
+        "rev": "3278353c26feb05e38313767b71c6b7cc91797d3",
+        "type": "github"
+      },
+      "original": {
+        "owner": "donteatoreo",
+        "ref": "donteatoreo/push-tyrrmtwkxpuv",
+        "repo": "nixpkgs",
+        "type": "github"
+      }
+    },
     "nixpkgs-stable": {
       "locked": {
         "lastModified": 1730741070,
@@ -410,6 +426,7 @@
         "nix-alien": "nix-alien",
         "nixos-hardware": "nixos-hardware",
         "nixpkgs": "nixpkgs_3",
+        "nixpkgs-donteatoreo": "nixpkgs-donteatoreo",
         "nixpkgs-stable": "nixpkgs-stable_2"
       }
     },

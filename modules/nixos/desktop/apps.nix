@@ -11,7 +11,7 @@
     affine
     discord
     eclipses.eclipse-modeling
-    warp-terminal
+    # warp-terminal
     google-chrome
     gthumb
     imagemagick
@@ -26,5 +26,6 @@
     zotero
     custom.tableplus
     custom.zen-browser
+    donteatoreo.warp-terminal
   ];
 }

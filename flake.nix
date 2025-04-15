@@ -8,6 +8,9 @@
     # Nixpkgs (NixOS stable)
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
 
+    # Nixpkgs (DontEatOreo)
+    nixpkgs-donteatoreo.url = "github:donteatoreo/nixpkgs/donteatoreo/push-tyrrmtwkxpuv";
+
     # Agenix
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
