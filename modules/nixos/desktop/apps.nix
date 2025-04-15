@@ -25,7 +25,7 @@
     zed-editor
     zotero
     custom.tableplus
+    custom.warp-terminal
     custom.zen-browser
-    donteatoreo.warp-terminal
   ];
 }
