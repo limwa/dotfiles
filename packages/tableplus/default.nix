@@ -3,7 +3,8 @@
   fetchurl,
   appimageTools,
   lib,
-}: let
+}:
+appimageTools.wrapType2 rec {
   pname = "tableplus";
   version = "1.2.6-260";
 
@@ -18,28 +19,25 @@
     hash = "sha256-4HIPkWqpIcyycpqs3ELcQZUlgmcXeHxdsJ6gS8YmIAg=";
   };
 
-  appimageContents = appimageTools.extract {
-    inherit pname version src;
-  };
-in
-  appimageTools.wrapType2 {
-    inherit pname version src;
-
-    meta = {
-      description = "Database management made easy";
-      homepage = "https://tableplus.com/";
-      license = lib.licenses.unfree;
-      platforms = [
-        "aarch64-linux"
-        "x86_64-linux"
-      ];
+  extraInstallCommands = let
+    appimageContents = appimageTools.extract {
+      inherit pname version src;
     };
+  in ''
+    install -D -m444 ${appimageContents}/usr/share/applications/tableplus-appimage.desktop $out/share/applications/tableplus-appimage.desktop
+    install -D -m444 ${appimageContents}/usr/share/icons/hicolor/256x256/apps/tableplus.png $out/share/icons/hicolor/256x256/apps/tableplus.png
 
-    extraInstallCommands = ''
-      install -D -m444 ${appimageContents}/usr/share/applications/tableplus-appimage.desktop $out/share/applications/tableplus-appimage.desktop
-      install -D -m444 ${appimageContents}/usr/share/icons/hicolor/256x256/apps/tableplus.png $out/share/icons/hicolor/256x256/apps/tableplus.png
+    substituteInPlace $out/share/applications/tableplus-appimage.desktop \
+      --replace-fail 'Icon=tableplus' "Icon=$out/share/icons/hicolor/256x256/apps/tableplus.png"
+  '';
 
-      substituteInPlace $out/share/applications/tableplus-appimage.desktop \
-        --replace-fail 'Icon=tableplus' "Icon=$out/share/icons/hicolor/256x256/apps/tableplus.png"
-    '';
-  }
+  meta = {
+    description = "Database management made easy";
+    homepage = "https://tableplus.com/";
+    license = lib.licenses.unfree;
+    platforms = [
+      "aarch64-linux"
+      "x86_64-linux"
+    ];
+  };
+}
