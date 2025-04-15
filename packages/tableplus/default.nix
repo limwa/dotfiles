@@ -34,7 +34,8 @@ in
 
     extraPkgs = pkgs:
       with pkgs; [
-        e2fsprogs
+        /*
+          e2fsprogs
         fontconfig.lib
         freetype
         fribidi
@@ -45,6 +46,7 @@ in
         libz
         xorg.libX11
         xorg.libxcb
+        */
       ];
 
     extraInstallCommands = ''
