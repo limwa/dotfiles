@@ -29,31 +29,14 @@ in
       description = "Database management made easy";
       homepage = "https://tableplus.com/";
       #license = lib.licenses.unfree;
-      platforms = ["x86_64-linux"];
+      platforms = with lib.platforms; (x86_64 ++ aarch64);
     };
 
-    extraPkgs = pkgs:
-      with pkgs; [
-        /*
-          e2fsprogs
-        fontconfig.lib
-        freetype
-        fribidi
-        harfbuzz
-        kdePackages.wayland
-        libgcc.lib
-        libgpg-error
-        libz
-        xorg.libX11
-        xorg.libxcb
-        */
-      ];
-
     extraInstallCommands = ''
-      install -m 444 -D ${appimageContents}/tableplus-appimage.desktop $out/share/applications/tableplus.desktop
-      install -m 444 -D ${appimageContents}/usr/share/icons/hicolor/256x256/apps/tableplus.png \
-        $out/share/icons/hicolor/256x256/apps/tableplus.png
+      cp -r ${appimageContents}/usr/lib ${appimageContents}/usr/share "$out"
+      rm -rf $out/usr
 
-      substituteInPlace $out/share/applications/tableplus.desktop --replace-fail 'Icon=tableplus' "Icon=$out/share/icons/hicolor/256x256/apps/tableplus.png"
+      # Otherwise it looks "suspicious"
+      chmod -R g-w $out
     '';
   }
