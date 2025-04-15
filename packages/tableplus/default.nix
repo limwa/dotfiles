@@ -6,7 +6,7 @@
 }:
 appimageTools.wrapType2 rec {
   pname = "tableplus";
-  version = "1.2.6-260";
+  version = "1.2.6-264";
 
   src = fetchurl {
     url =
