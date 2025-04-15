@@ -29,7 +29,10 @@ in
       description = "Database management made easy";
       homepage = "https://tableplus.com/";
       license = lib.licenses.unfree;
-      platforms = with lib.platforms; (x86_64 ++ aarch64);
+      platforms = [
+        "aarch64-linux"
+        "x86_64-linux"
+      ];
     };
 
     extraInstallCommands = ''
