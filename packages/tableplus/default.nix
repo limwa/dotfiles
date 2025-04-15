@@ -4,26 +4,31 @@
   appimageTools,
   lib,
 }: let
-  url =
-    if stdenv.hostPlatform.system == "x86_64-linux"
-    then "https://tableplus.com/release/linux/x64/TablePlus-x64.AppImage"
-    else if stdenv.hostPlatform.system == "aarch64-linux"
-    then "https://tableplus.com/release/linux/arm64/TablePlus-aarch64.AppImage"
-    else throw "This derivation for TablePlus is not supported on ${stdenv.hostPlatform.system}";
+  pname = "tableplus";
+  version = "1.2.6-260";
+
+  src = fetchurl {
+    url =
+      if stdenv.hostPlatform.system == "x86_64-linux"
+      then "https://tableplus.com/release/linux/x64/TablePlus-x64.AppImage"
+      else if stdenv.hostPlatform.system == "aarch64-linux"
+      then "https://tableplus.com/release/linux/arm64/TablePlus-aarch64.AppImage"
+      else throw "This derivation for TablePlus is not supported on ${stdenv.hostPlatform.system}";
+
+    hash = "sha256-4HIPkWqpIcyycpqs3ELcQZUlgmcXeHxdsJ6gS8YmIAg=";
+  };
+
+  appimageContents = appimageTools.extract {
+    inherit pname version src;
+  };
 in
   appimageTools.wrapType2 {
-    pname = "tableplus";
-    version = "1.2.6-260";
-
-    src = fetchurl {
-      inherit url;
-      sha256 = "sha256-4HIPkWqpIcyycpqs3ELcQZUlgmcXeHxdsJ6gS8YmIAg=";
-    };
+    inherit pname version src;
 
     meta = {
       description = "Database management made easy";
       homepage = "https://tableplus.com/";
-      license = lib.licenses.unfree;
+      #license = lib.licenses.unfree;
       platforms = ["x86_64-linux"];
     };
 
@@ -41,4 +46,12 @@ in
         xorg.libX11
         xorg.libxcb
       ];
+
+    extraInstallCommands = ''
+      install -m 444 -D ${appimageContents}/tableplus-appimage.desktop $out/share/applications/tableplus.desktop
+      install -m 444 -D ${appimageContents}/usr/share/icons/hicolor/256x256/apps/tableplus.png \
+        $out/share/icons/hicolor/256x256/apps/tableplus.png
+
+      substituteInPlace $out/share/applications/tableplus.desktop --replace-fail 'Icon=tableplus' "Icon=$out/share/icons/hicolor/256x256/apps/tableplus.png"
+    '';
   }
