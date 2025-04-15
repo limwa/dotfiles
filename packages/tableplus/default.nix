@@ -28,14 +28,9 @@ in
     meta = {
       description = "Database management made easy";
       homepage = "https://tableplus.com/";
-      #license = lib.licenses.unfree;
+      license = lib.licenses.unfree;
       platforms = with lib.platforms; (x86_64 ++ aarch64);
     };
-
-    extraPkgs = pkgs:
-      with pkgs; [
-        libz
-      ];
 
     extraInstallCommands = ''
       install -D -m444 ${appimageContents}/usr/share/applications/tableplus-appimage.desktop $out/share/applications/tableplus-appimage.desktop
