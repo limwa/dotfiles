@@ -10,18 +10,18 @@
 
   nixpkgs.config.allowUnfree = true;
 
+  # Use Wayland by default.
+  services.displayManager.defaultSession = lib.mkDefault "gnome";
+
   # Use the beta NVIDIA drivers. Stable drivers are available too.
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
 
-  # Create specializations for Sync and Reverse Sync modes.
+  # Create specializations for Sync mode.
   specialisation = lib.mkIf (config.hardware.nvidia.prime.offload.enable) {
-    with-reverse-sync.configuration = {
-      hardware.nvidia.prime = {
-        reverseSync.enable = lib.mkForce true;
-      };
-    };
-
     with-sync.configuration = {
+      # Use X11 for better handling of the display.
+      services.displayManager.defaultSession = lib.mkForce "gnome-xorg";
+
       hardware.nvidia = {
         prime = {
           offload.enable = lib.mkForce false;
