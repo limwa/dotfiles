@@ -24,7 +24,7 @@ appimageTools.wrapType2 rec {
       inherit pname version src;
     };
   in ''
-    install -D -m444 ${appimageContents}/usr/share/applications/tableplus-appimage.desktop $out/share/applications/tableplus-appimage.desktop
+    install -D -m444 ${appimageContents}/usr/share/applications/tableplus-appimage.desktop $out/share/applications/tableplus.desktop
     install -D -m444 ${appimageContents}/usr/share/icons/hicolor/256x256/apps/tableplus.png $out/share/icons/hicolor/256x256/apps/tableplus.png
   '';
 
