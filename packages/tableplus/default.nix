@@ -32,11 +32,16 @@ in
       platforms = with lib.platforms; (x86_64 ++ aarch64);
     };
 
-    extraInstallCommands = ''
-      cp -r ${appimageContents}/usr/lib ${appimageContents}/usr/share "$out"
-      rm -rf $out/usr
+    extraPkgs = pkgs:
+      with pkgs; [
+        libz
+      ];
 
-      # Otherwise it looks "suspicious"
-      chmod -R g-w $out
+    extraInstallCommands = ''
+      install -D -m444 ${appimageContents}/usr/share/applications/tableplus-appimage.desktop $out/share/applications/tableplus-appimage.desktop
+      install -D -m444 ${appimageContents}/usr/share/icons/hicolor/256x256/apps/tableplus.png $out/share/icons/hicolor/256x256/apps/tableplus.png
+
+      substituteInPlace $out/share/applications/tableplus-appimage.desktop \
+        --replace-fail 'Icon=tableplus' "Icon=$out/share/icons/hicolor/256x256/apps/tableplus.png"
     '';
   }
