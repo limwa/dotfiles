@@ -26,9 +26,6 @@ appimageTools.wrapType2 rec {
   in ''
     install -D -m444 ${appimageContents}/usr/share/applications/tableplus-appimage.desktop $out/share/applications/tableplus-appimage.desktop
     install -D -m444 ${appimageContents}/usr/share/icons/hicolor/256x256/apps/tableplus.png $out/share/icons/hicolor/256x256/apps/tableplus.png
-
-    substituteInPlace $out/share/applications/tableplus-appimage.desktop \
-      --replace-fail 'Icon=tableplus' "Icon=$out/share/icons/hicolor/256x256/apps/tableplus.png"
   '';
 
   meta = {

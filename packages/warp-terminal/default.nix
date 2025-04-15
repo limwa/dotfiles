@@ -26,7 +26,7 @@ appimageTools.wrapType2 rec {
     install -D -m444 ${appimageContents}/usr/share/icons/hicolor/512x512/apps/dev.warp.Warp.png $out/share/icons/hicolor/512x512/apps/dev.warp.Warp.png
 
     substituteInPlace $out/share/applications/dev.warp.Warp.desktop \
-      --replace-fail 'Exec=warp %U' "Exec=warp-terminal %U"
+      --replace-fail 'Exec=warp %U' "Exec=${pname} %U"
   '';
 
   meta = {
