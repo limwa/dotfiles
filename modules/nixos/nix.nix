@@ -14,6 +14,8 @@
         "flakes"
       ];
 
+      trusted-users = ["@wheel"];
+
       # Build binaries from source if a connection to the cache is not possible.
       fallback = true;
     };
