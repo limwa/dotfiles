@@ -14,7 +14,13 @@
         "flakes"
       ];
 
+      # Keep outputs of successfully built derivations
+      keep-outputs = true;
+
       trusted-users = ["@wheel"];
+
+      # Increase the download buffer size to 1GiB
+      download-buffer-size = 1073741824;
 
       # Build binaries from source if a connection to the cache is not possible.
       fallback = true;
