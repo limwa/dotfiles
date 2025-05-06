@@ -32,7 +32,7 @@
     # Enable the Nix garbage collector, and collect garbage every day.
     gc = {
       automatic = true;
-      dates = "daily";
+      dates = "weekly";
       options = "--delete-older-than 14d";
     };
 
