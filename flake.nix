@@ -3,7 +3,7 @@
 
   inputs = {
     # Nixpkgs (NixOS unstable)
-    nixpkgs.url = "github:nixos/nixpkgs/gnome";
+    nixpkgs.url = "github:nixos/nixpkgs?ref=staging-next";
 
     # Nixpkgs (NixOS stable)
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
