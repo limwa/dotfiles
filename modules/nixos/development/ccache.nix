@@ -32,5 +32,19 @@
         '';
       };
     })
+    (
+      self: super: let
+        withCachedStdenv = drv:
+          drv.override (prev: {
+            stdenv = self.ccacheStdenv.override {
+              inherit (prev) stdenv;
+            };
+          });
+      in {
+        libreoffice = super.libreoffice.override (prev: {
+          unwrapped = withCachedStdenv prev.unwrapped;
+        });
+      }
+    )
   ];
 }
