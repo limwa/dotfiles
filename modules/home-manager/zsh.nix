@@ -5,6 +5,7 @@
 
       shellAliases = {
         dotfiles = "code $HOME/dotfiles";
+        nixpkgs = "code /run/current-system/nixpkgs";
         nix = "noglob nix";
       };
 
