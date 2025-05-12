@@ -17,12 +17,9 @@ in {
 
   services.xserver.videoDrivers = ["nvidia"];
 
-  boot = {
-    kernelModules = ["legion-laptop"];
-    extraModulePackages = with config.boot.kernelPackages; [
-      lenovo-legion-module
-    ];
-  };
+  boot.extraModulePackages = with config.boot.kernelPackages; [
+    lenovo-legion-module
+  ];
 
   hardware.nvidia = {
     dynamicBoost.enable = lib.mkDefault true;
