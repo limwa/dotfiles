@@ -14,9 +14,9 @@
   # Use Wayland by default.
   services.displayManager.defaultSession = lib.mkDefault "gnome";
 
-  # Use the beta NVIDIA drivers. Stable drivers are available too.
+  # Use the latest NVIDIA drivers. Beta and stable drivers are available too.
   hardware.nvidia = {
-    package = config.boot.kernelPackages.nvidiaPackages.beta;
+    package = config.boot.kernelPackages.nvidiaPackages.latest;
     open = useOpenNvidiaDrivers;
   };
 
