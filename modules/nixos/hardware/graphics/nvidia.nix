@@ -17,19 +17,19 @@
   hardware.nvidia.package = config.boot.kernelPackages.nvidiaPackages.beta;
 
   # Create specializations for Sync mode.
-  specialisation = lib.mkIf (config.hardware.nvidia.prime.offload.enable) {
-    with-sync.configuration = {
-      # Use X11 for better handling of the display.
-      services.displayManager.defaultSession = lib.mkForce "gnome-xorg";
-
-      hardware.nvidia = {
-        prime = {
-          offload.enable = lib.mkForce false;
-          sync.enable = lib.mkForce true;
-        };
-
-        powerManagement.finegrained = lib.mkForce false;
-      };
-    };
-  };
+  # specialisation = lib.mkIf (config.hardware.nvidia.prime.offload.enable) {
+  #   with-sync.configuration = {
+  #     # Use X11 for better handling of the display.
+  #     services.displayManager.defaultSession = lib.mkForce "gnome-xorg";
+  #
+  #     hardware.nvidia = {
+  #       prime = {
+  #         offload.enable = lib.mkForce false;
+  #         sync.enable = lib.mkForce true;
+  #       };
+  #
+  #       powerManagement.finegrained = lib.mkForce false;
+  #     };
+  #   };
+  # };
 }

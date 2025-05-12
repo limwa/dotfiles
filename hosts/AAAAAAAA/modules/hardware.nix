@@ -17,7 +17,9 @@ in {
   services.xserver.videoDrivers = ["nvidia"];
 
   hardware.nvidia = {
+    dynamicBoost.enable = lib.mkDefault true;
     modesetting.enable = lib.mkDefault true;
+    open = lib.mkDefault false;
     powerManagement.enable = lib.mkDefault true;
     powerManagement.finegrained = lib.mkDefault true;
 
