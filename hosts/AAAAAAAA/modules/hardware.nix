@@ -7,7 +7,7 @@
 in {
   imports = [
     "${nixos-hardware}/common/cpu/amd/pstate.nix"
-    "${nixos-hardware}/common/gpu/amd"
+    "${nixos-hardware}/common/cpu/amd/zenpower.nix"
     "${nixos-hardware}/common/gpu/nvidia/ampere"
     "${nixos-hardware}/common/gpu/nvidia/prime.nix"
     "${nixos-hardware}/common/pc/laptop"
@@ -19,7 +19,6 @@ in {
   hardware.nvidia = {
     dynamicBoost.enable = lib.mkDefault true;
     modesetting.enable = lib.mkDefault true;
-    open = lib.mkDefault false;
     powerManagement.enable = lib.mkDefault true;
     powerManagement.finegrained = lib.mkDefault true;
 

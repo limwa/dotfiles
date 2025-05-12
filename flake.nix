@@ -297,6 +297,7 @@
 
           specialArgs = {
             # useLatestKernel = false;
+            useOpenNvidiaDrivers = false;
           };
         };
       };
