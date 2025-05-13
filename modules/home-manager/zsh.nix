@@ -1,4 +1,12 @@
-{user, ...}: {
+{
+  user,
+  pkgs,
+  ...
+}: {
+  # Use zsh as the default shell.
+  programs.zsh.enable = true;
+  users.users.${user.login}.shell = pkgs.zsh;
+
   home-manager.users.${user.login} = {
     programs.zsh = {
       enable = true;

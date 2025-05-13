@@ -9,6 +9,9 @@
 
       # Enable direnv for zsh.
       enableZshIntegration = true;
+
+      # Enable direnv for fish.
+      enableFishIntegration = true;
     };
   };
 }

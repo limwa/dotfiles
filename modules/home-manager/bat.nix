@@ -6,5 +6,6 @@
 
     # Setup shell alias.
     programs.zsh.shellAliases.cat = "bat --paging=never --style=plain";
+    programs.fish.shellAliases.cat = "bat --paging=never --style=plain";
   };
 }

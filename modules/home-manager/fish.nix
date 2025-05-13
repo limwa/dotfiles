@@ -1,4 +1,12 @@
-{user, ...}: {
+{
+  user,
+  pkgs,
+  ...
+}: {
+  # Use fish as the default shell.
+  programs.fish.enable = true;
+  users.users.${user.login}.shell = pkgs.fish;
+
   home-manager.users.${user.login} = {
     programs.fish = {
       enable = true;
@@ -9,6 +17,10 @@
         nixpkgs = "code /run/current-system/nixpkgs";
         #nix = "noglob nix";
       };
+
+      shellInit = ''
+        set fish_greeting
+      '';
     };
 
     programs.starship = {
