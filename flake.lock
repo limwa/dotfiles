@@ -359,16 +359,16 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1747509667,
-        "narHash": "sha256-NljuggxCjBnkvcA2uCxie9zOxUXM+wH6LjreVOolAB0=",
+        "lastModified": 1747510523,
+        "narHash": "sha256-r14DblS3YptSlEq6y7aNnIYUnXG0le6YQRKIYQaUC3g=",
         "owner": "limwa",
         "repo": "nixpkgs",
-        "rev": "88b019ca161de83d6285f91ef652ad0098797c23",
+        "rev": "de424928047638754926eb85f668ae3196928df4",
         "type": "github"
       },
       "original": {
         "owner": "limwa",
-        "ref": "zhf/297119729",
+        "ref": "auto-update/gnomeExtensions.gsconnect",
         "repo": "nixpkgs",
         "type": "github"
       }

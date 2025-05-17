@@ -3,7 +3,7 @@
 
   inputs = {
     # Nixpkgs (NixOS unstable)
-    nixpkgs.url = "github:limwa/nixpkgs/zhf/297119729";
+    nixpkgs.url = "github:limwa/nixpkgs/auto-update/gnomeExtensions.gsconnect";
 
     # Nixpkgs (NixOS stable)
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
