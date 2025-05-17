@@ -27,6 +27,7 @@
     pciutils
     wirelesstools
 
+    gnomeExtensions.applications-menu
     gnomeExtensions.astra-monitor
     gnomeExtensions.dash-to-dock
     gnomeExtensions.media-controls
