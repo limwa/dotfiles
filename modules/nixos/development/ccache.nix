@@ -32,7 +32,8 @@
         '';
       };
     })
-    (
+    /*
+      (
       self: super: let
         withCachedStdenv = drv:
           drv.override (prev: {
@@ -46,5 +47,6 @@
         });
       }
     )
+    */
   ];
 }
