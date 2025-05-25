@@ -25,6 +25,5 @@
     zotero
     custom.tableplus
     custom.warp-terminal
-    custom.zen-browser
   ];
 }
