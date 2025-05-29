@@ -233,8 +233,9 @@
           ./modules/home-manager/bat.nix
           ./modules/home-manager/direnv.nix
           ./modules/home-manager/gh.nix
+          ./modules/home-manager/ghostty.nix
           ./modules/home-manager/git.nix
-          ./modules/home-manager/zsh.nix
+          ./modules/home-manager/fish.nix
           ./packages/overlay.nix
         ];
 
