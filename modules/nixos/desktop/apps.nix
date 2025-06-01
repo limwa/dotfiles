@@ -8,6 +8,7 @@
 
   # User-scoped apps
   users.users.${user.login}.packages = with pkgs; [
+    code-cursor
     discord
     eclipses.eclipse-modeling
     # warp-terminal

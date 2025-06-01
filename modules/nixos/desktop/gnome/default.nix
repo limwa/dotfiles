@@ -5,7 +5,7 @@
   ];
 
   # Enable the GNOME Desktop Environment.
-  services.xserver.desktopManager.gnome.enable = true;
+  services.desktopManager.gnome.enable = true;
 
   # KDE Connect on GNOME
   programs.kdeconnect.package = pkgs.gnomeExtensions.gsconnect;

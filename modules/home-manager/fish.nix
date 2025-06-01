@@ -21,11 +21,20 @@
       shellInit = ''
         set fish_greeting
       '';
-    };
 
-    programs.starship = {
-      enable = true;
-      enableTransience = true;
+      plugins = with pkgs.fishPlugins; [
+        z
+        plugin-git
+        autopair
+        puffer
+        sponge
+        done
+        pure
+        fish-you-should-use
+        colored-man-pages
+        plugin-sudope
+        fzf-fish
+      ];
     };
   };
 }
