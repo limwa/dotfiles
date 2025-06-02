@@ -9,7 +9,7 @@
   # User-scoped apps
   users.users.${user.login}.packages = with pkgs; [
     (code-cursor.overrideAttrs (oldAttrs: {
-      buildInputs = oldAttrs.buildInputs ++ [pkgs.custom.openssh-permission-patched];
+      runtimeDependencies = oldAttrs.runtimeDependencies ++ [pkgs.custom.openssh-permission-patched];
     }))
     discord
     eclipses.eclipse-modeling
