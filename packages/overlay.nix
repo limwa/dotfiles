@@ -7,6 +7,8 @@
         warp-terminal = final.callPackage ./warp-terminal {
           old-warp-terminal = prev.warp-terminal;
         };
+
+        openssh-permission-patched = final.callPackage ./openssh-permission-patched {};
       };
     })
   ];
