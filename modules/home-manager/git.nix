@@ -67,5 +67,12 @@ in {
         };
       };
     };
+
+    # Allow SSH config to be used inside FHS environments.
+    # https://github.com/nix-community/home-manager/issues/322
+    home.file.".ssh/config" = {
+      target = ".ssh/_config";
+      onChange = "cat ~/.ssh/_config > ~/.ssh/config && chmod 400 ~/.ssh/config";
+    };
   };
 }
