@@ -3,7 +3,7 @@
 
   inputs = {
     # Nixpkgs (NixOS unstable)
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs?ref=pull/414106/head";
 
     # Nixpkgs (NixOS stable)
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
@@ -297,7 +297,7 @@
           ];
 
           specialArgs = {
-            useLatestKernel = false;
+            # useLatestKernel = false;
             useOpenNvidiaDrivers = false;
           };
         };
