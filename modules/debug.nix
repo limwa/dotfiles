@@ -16,8 +16,9 @@
     };
 
     path = with pkgs; [
-      ps
+      coreutils
       gnugrep
+      ps
     ];
 
     wantedBy = ["multi-user.target"];
