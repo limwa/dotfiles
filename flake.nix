@@ -198,6 +198,7 @@
       nixosConfigurations = let
         commonModules = [
           disko.nixosModules.disko
+          ./modules/debug.nix
           ./modules/nixos/audio
           ./modules/nixos/audio/soundwire.nix
           ./modules/nixos/desktop/gnome
