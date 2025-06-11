@@ -6,20 +6,23 @@
       RequiresMountsFor = ["/home"];
     };
 
-    serviceConfig = {
+    serviceConfig = let
+      bin = {
+        bash = "${pkgs.bashNonInteractive}/bin/bash";
+        date = "${pkgs.coreutils}/bin/date";
+        grep = "${pkgs.gnugrep}/bin/grep";
+        ps = "${pkgs.ps}/bin/ps";
+        true = "${pkgs.coreutils}/bin/true";
+      };
+      # sleep = "${pkgs.coreutils}/bin/sleep";
+    in {
       Type = "oneshot";
       RemainAfterExit = true;
-      ExecStart = "true";
-      ExecStop = "ps aux | grep make >> /home/lima/make-processes-$(date +%Y-%m-%d_%H-%M-%S).txt";
+      ExecStart = "${bin.true}";
+      ExecStop = "${bin.ps} aux | ${bin.grep} make >> /home/lima/make-processes-$(${bin.date} +%Y-%m-%d_%H-%M-%S).txt";
 
       TimeoutSec = "infinity";
     };
-
-    path = with pkgs; [
-      coreutils
-      gnugrep
-      ps
-    ];
 
     wantedBy = ["multi-user.target"];
   };
