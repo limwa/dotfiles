@@ -1,4 +1,5 @@
 {pkgs, ...}: {
+  # https://unix.stackexchange.com/questions/739363/a-systemd-service-that-runs-just-before-shutdown-and-uses-a-mounted-filesystem
   systemd.services."dump-make-processes" = {
     unitConfig = {
       Description = "Dump make processes";
@@ -19,5 +20,7 @@
 
       TimeoutSec = "infinity";
     };
+
+    wantedBy = ["multi-user.target"];
   };
 }
