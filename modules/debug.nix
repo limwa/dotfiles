@@ -9,7 +9,7 @@
     serviceConfig = {
       Type = "oneshot";
       RemainAfterExit = true;
-      ExecStart = "/bin/true";
+      ExecStart = "${pkgs.coreutils}/bin/true";
       ExecStop = let
         bash = "${pkgs.bash}/bin/bash";
         ps = "${pkgs.ps}/bin/ps";
