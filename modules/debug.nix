@@ -6,20 +6,25 @@
       RequiresMountsFor = ["/home"];
     };
 
-    serviceConfig = let
-      bin = {
-        bash = "${pkgs.bashNonInteractive}/bin/bash";
-        date = "${pkgs.coreutils}/bin/date";
-        grep = "${pkgs.gnugrep}/bin/grep";
-        ps = "${pkgs.procps}/bin/ps";
-        true = "${pkgs.coreutils}/bin/true";
-      };
-      # sleep = "${pkgs.coreutils}/bin/sleep";
-    in {
+    serviceConfig = {
       Type = "oneshot";
       RemainAfterExit = true;
-      ExecStart = "${bin.true}";
-      ExecStop = "${bin.bash} -c '${bin.ps} aux | ${bin.grep} make >> /home/lima/make-processes-$(${bin.date} +%Y-%m-%d_%H-%M-%S).txt'";
+      ExecStart = "${pkgs.coreutils}/bin/true";
+      ExecStop = let
+        script = pkgs.writeShellApplication {
+          name = "dump-make-processes";
+
+          runtimeInputs = [
+            pkgs.procps
+            pkgs.coreutils
+          ];
+
+          text = ''
+            current_time="$(date +%Y-%m-%dT%H:%M:%S)"
+            pgrep -a make >> "/home/lima/make-processes-$current_time.log"
+          '';
+        };
+      in "${script}";
 
       TimeoutSec = "infinity";
     };
