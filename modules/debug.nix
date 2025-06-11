@@ -12,7 +12,7 @@
       ExecStart = "${pkgs.coreutils}/bin/true";
       ExecStop = let
         script = pkgs.writeShellApplication {
-          name = "dump-make-processes";
+          name = "dump-m_a_ke-processes";
 
           runtimeInputs = [
             pkgs.procps
