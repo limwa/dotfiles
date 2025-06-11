@@ -19,7 +19,7 @@
       Type = "oneshot";
       RemainAfterExit = true;
       ExecStart = "${bin.true}";
-      ExecStop = "${bin.ps} aux | ${bin.grep} make >> /home/lima/make-processes-$(${bin.date} +%Y-%m-%d_%H-%M-%S).txt";
+      ExecStop = "${bin.bash} -c '${bin.ps} aux | ${bin.grep} make >> /home/lima/make-processes-$(${bin.date} +%Y-%m-%d_%H-%M-%S).txt'";
 
       TimeoutSec = "infinity";
     };
