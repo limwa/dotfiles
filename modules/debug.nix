@@ -9,17 +9,16 @@
     serviceConfig = {
       Type = "oneshot";
       RemainAfterExit = true;
-      ExecStart = "${pkgs.coreutils}/bin/true";
-      ExecStop = let
-        bash = "${pkgs.bash}/bin/bash";
-        ps = "${pkgs.ps}/bin/ps";
-        grep = "${pkgs.gnugrep}/bin/grep";
-        date = "${pkgs.coreutils}/bin/date";
-        # sleep = "${pkgs.coreutils}/bin/sleep";
-      in "${bash} -c ' ${ps} aux | ${grep} make >> /home/lima/make-processes-$(${date} +%Y-%m-%d_%H-%M-%S).txt'";
+      ExecStart = "true";
+      ExecStop = "ps aux | grep make >> /home/lima/make-processes-$(date +%Y-%m-%d_%H-%M-%S).txt";
 
       TimeoutSec = "infinity";
     };
+
+    path = with pkgs; [
+      ps
+      gnugrep
+    ];
 
     wantedBy = ["multi-user.target"];
   };
