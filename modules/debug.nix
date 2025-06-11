@@ -24,7 +24,7 @@
             pgrep -a make >> "/home/lima/make-processes-$current_time.log"
           '';
         };
-      in "${script}";
+      in "${script}/bin/${script.name}";
 
       TimeoutSec = "infinity";
     };
