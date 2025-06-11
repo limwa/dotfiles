@@ -11,7 +11,7 @@
         bash = "${pkgs.bashNonInteractive}/bin/bash";
         date = "${pkgs.coreutils}/bin/date";
         grep = "${pkgs.gnugrep}/bin/grep";
-        ps = "${pkgs.ps}/bin/ps";
+        ps = "${pkgs.procps}/bin/ps";
         true = "${pkgs.coreutils}/bin/true";
       };
       # sleep = "${pkgs.coreutils}/bin/sleep";
