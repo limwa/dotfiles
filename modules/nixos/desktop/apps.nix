@@ -17,6 +17,7 @@
     imagemagick
     insomnia
     jetbrains-toolbox
+    jetbrains.idea-ultimate
     libreoffice
     slack
     spotify
