@@ -21,7 +21,18 @@
 
           text = ''
             current_time="$(date +%Y-%m-%dT%H:%M:%S)"
-            pgrep -a make >> "/home/lima/make-processes-$current_time.log"
+
+            for pid in $(pgrep make); do
+              {
+                echo "Process"
+                echo "$pid"
+                realpath "/proc/$pid/exe"
+                realpath "/proc/$pid/cwd"
+                cat "/proc/$pid/cmdline"
+                echo "Done"
+
+              } >> "/home/lima/make-processes-$current_time.log"
+            done
           '';
         };
       in "${script}/bin/${script.name}";
