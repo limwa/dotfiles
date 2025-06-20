@@ -5,9 +5,6 @@
     # Nixpkgs (NixOS unstable)
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
 
-    # Nixpkgs (NixOS stable)
-    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-24.11";
-
     # Agenix
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
@@ -37,7 +34,6 @@
   outputs = {
     self,
     nixpkgs,
-    nixpkgs-stable,
     disko,
     flake-utils,
     ...
@@ -178,6 +174,7 @@
         usePortugueseKeyboard = true;
         useEpsonDrivers = true;
         useLatestKernel = true;
+        useOpenNvidiaDrivers = null; # Let hardware configuration decide
 
         user = {
           login = "lima";
@@ -257,28 +254,11 @@
           in
             f [] attrList;
 
-          # Add `pkgs.unfree` and `pkgs.stable`
-          nixpkgs-overlay-add-unfree-and-stable = {
-            nixpkgs.overlays = [
-              (final: prev: {
-                stable = import nixpkgs-stable {
-                  inherit system;
-                  config.allowUnfree = true;
-                };
-              })
-            ];
-          };
-
           system-cfg = recursiveMerge [
             {
               inherit system;
 
-              modules =
-                commonModules
-                ++ [
-                  # Nixpkgs overlay
-                  nixpkgs-overlay-add-unfree-and-stable
-                ];
+              modules = commonModules;
 
               specialArgs =
                 self.commonArgs
@@ -299,7 +279,7 @@
 
           specialArgs = {
             # useLatestKernel = false;
-            useOpenNvidiaDrivers = false;
+            # useOpenNvidiaDrivers = false;
           };
         };
       };

@@ -15,10 +15,13 @@
   services.displayManager.defaultSession = lib.mkDefault "gnome";
 
   # Use the latest NVIDIA drivers. Beta and stable drivers are available too.
-  hardware.nvidia = {
-    package = config.boot.kernelPackages.nvidiaPackages.latest;
-    open = useOpenNvidiaDrivers;
-  };
+  hardware.nvidia =
+    {
+      package = config.boot.kernelPackages.nvidiaPackages.latest;
+    }
+    // lib.optionalAttrs (useOpenNvidiaDrivers != null) {
+      open = useOpenNvidiaDrivers;
+    };
 
   # Create specializations for Sync mode.
   # specialisation = lib.mkIf (config.hardware.nvidia.prime.offload.enable) {
