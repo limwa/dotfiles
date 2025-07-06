@@ -1,8 +1,12 @@
-{user, pkgs, ...}: {
+{
+  user,
+  pkgs,
+  ...
+}: {
   # Enable networking.
   networking.networkmanager = {
     enable = true;
-    plugins = with pkgs; [ 
+    plugins = with pkgs; [
       networkmanager-fortisslvpn
       networkmanager-iodine
       networkmanager-l2tp
