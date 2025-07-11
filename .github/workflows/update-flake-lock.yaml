@@ -28,17 +28,17 @@ jobs:
         uses: DeterminateSystems/nix-installer-action@main
 
       - name: Only run if nixpkgs is updated
-        if: ${{ ! inputs.force }}
+        id: nixpkgs-update
         run: |
-          nix flake update nixpkgs && git diff --quiet || exit 0
-          echo "Nixpkgs has not been updated"
-          exit 1
+          nix flake update nixpkgs
+          echo "changed=$(git diff --quiet && echo false || echo true)" >> "$GITHUB_OUTPUT"
       
       - name: Restore initial repository state
         run: git reset --hard HEAD
 
       - name: Update flake.lock
         id: update
+        if: ${{ !inputs.force && steps.nixpkgs-update.outputs.changed }}
         uses: DeterminateSystems/update-flake-lock@main
         with:
           commit-msg: "build: update flake.lock"   # Commit message to be used
@@ -57,9 +57,11 @@ jobs:
             I'm still computing the package changes for this update. Please hang on! :grin:
 
       - name: Merge update branch with main
+        if : ${{ steps.update.conclusion == 'success' }}
         run: git merge --ff-only origin/update_flake_lock_action
 
       - name: Create update summary
+        if : ${{ steps.update.conclusion == 'success' }}
         run: nix run .#create-update-summary
 
       - name: Upload update summary as comment
