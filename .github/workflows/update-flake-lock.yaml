@@ -1,8 +1,14 @@
 name: Update flake dependencies
 on:
   workflow_dispatch: # Allows manual triggering
+    inputs:
+      force:
+        description: "Update all inputs, even if there are no updates to nixpkgs"
+        required: false
+        type: "boolean"
+        
   schedule:
-    - cron: '43 6 * * 6' # At 06:43 UTC on Saturday.
+    - cron: "43 6 * * *" # At 06:43 UTC.
 
 jobs:
   create-pr:
@@ -20,6 +26,12 @@ jobs:
 
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@main
+
+      - name: Only run if nixpkgs is updated
+        if: ${{ ! inputs.force }}
+        run: |
+          nix flake update nixpkgs
+          git diff --quiet || echo "Nixpkgs has no new updates" && exit 1
 
       - name: Update flake.lock
         id: update
