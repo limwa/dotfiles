@@ -1,16 +1,25 @@
 name: Update flake dependencies
 on:
   workflow_dispatch: # Allows manual triggering
+    inputs:
+      force:
+        description: "Force update to all inputs"
+        required: false
+        type: "boolean"
+
   schedule:
-    - cron: '43 6 * * 6' # At 06:43 UTC on Saturday.
+    - cron: "43 6 * * *" # At 06:43 UTC.
 
 jobs:
   create-pr:
     name: Create Pull Request
     runs-on: ubuntu-latest
+    continue-on-error: true
+
     permissions:
       contents: write
       pull-requests: write
+
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -20,6 +29,15 @@ jobs:
 
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@main
+
+      - name: Fail if nixpkgs is up-to-date
+        if: ${{ ! inputs.force }}
+        run: |
+          nix flake update nixpkgs
+          git diff --quiet && exit 1 || exit 0
+      
+      - name: Restore initial repository state
+        run: git reset --hard HEAD
 
       - name: Update flake.lock
         id: update
@@ -43,9 +61,11 @@ jobs:
         run: git merge --ff-only origin/update_flake_lock_action
 
       - name: Create update summary
+        id: update-summary
         run: nix run .#create-update-summary
 
       - name: Upload update summary as comment
+        if: ${{ steps.update-summary.conclusion == 'success' }}
         uses: thollander/actions-comment-pull-request@v3
         with:
           pr-number: ${{ steps.update.outputs.pull-request-number }}
@@ -53,7 +73,7 @@ jobs:
           file-path: summary.md
 
       - name: On error, notify user in summary comment
-        if : ${{ failure() }}
+        if: ${{ steps.update-summary.conclusion == 'failure' }}
         uses: thollander/actions-comment-pull-request@v3
         with:
           pr-number: ${{ steps.update.outputs.pull-request-number }}
