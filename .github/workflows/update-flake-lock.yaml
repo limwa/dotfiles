@@ -3,7 +3,7 @@ on:
   workflow_dispatch: # Allows manual triggering
     inputs:
       force:
-        description: "Update all inputs, even if there are no updates to nixpkgs"
+        description: "Force update to all inputs"
         required: false
         type: "boolean"
         
@@ -31,7 +31,7 @@ jobs:
         if: ${{ ! inputs.force }}
         run: |
           nix flake update nixpkgs
-          git diff --quiet || echo "Nixpkgs has no new updates" && exit 1
+          git diff --quiet || (echo "Nixpkgs has no new updates" && exit 1)
 
       - name: Update flake.lock
         id: update
