@@ -27,18 +27,18 @@ jobs:
       - name: Install Nix
         uses: DeterminateSystems/nix-installer-action@main
 
-      - name: Only run if nixpkgs is updated
+      - name: Fail if nixpkgs is up-to-date
         id: nixpkgs-update
+        if: ${{ ! inputs.force }}
         run: |
           nix flake update nixpkgs
-          echo "changed=$(git diff --quiet && echo false || echo true)" >> "$GITHUB_OUTPUT"
+          git diff --quiet && exit 1 || exit 0
       
       - name: Restore initial repository state
         run: git reset --hard HEAD
 
       - name: Update flake.lock
         id: update
-        if: ${{ inputs.force || fromJSON(steps.nixpkgs-update.outputs.changed) }}
         uses: DeterminateSystems/update-flake-lock@main
         with:
           commit-msg: "build: update flake.lock"   # Commit message to be used
@@ -46,7 +46,6 @@ jobs:
           pr-assignees: limwa # Assign me to the PR
       
       - name: Create placeholder summary comment
-        if : ${{ steps.update.conclusion == 'success' }}
         uses: thollander/actions-comment-pull-request@v3
         with:
           pr-number: ${{ steps.update.outputs.pull-request-number }}
@@ -57,15 +56,12 @@ jobs:
             I'm still computing the package changes for this update. Please hang on! :grin:
 
       - name: Merge update branch with main
-        if : ${{ steps.update.conclusion == 'success' }}
         run: git merge --ff-only origin/update_flake_lock_action
 
       - name: Create update summary
-        if : ${{ steps.update.conclusion == 'success' }}
         run: nix run .#create-update-summary
 
       - name: Upload update summary as comment
-        if : ${{ steps.update.conclusion == 'success' }}
         uses: thollander/actions-comment-pull-request@v3
         with:
           pr-number: ${{ steps.update.outputs.pull-request-number }}
@@ -73,7 +69,6 @@ jobs:
           file-path: summary.md
 
       - name: On error, notify user in summary comment
-        if : ${{ steps.update.conclusion == 'success' }}
         uses: thollander/actions-comment-pull-request@v3
         with:
           pr-number: ${{ steps.update.outputs.pull-request-number }}
@@ -82,3 +77,7 @@ jobs:
             # Package Changes
 
             Unfortunately, I wasn't able to compute the package changes for this update. Please check the action log for more information. :pensive:
+
+      - name: On error, make job exit with success
+        if: ${{ failure() }}
+        run: exit 0
