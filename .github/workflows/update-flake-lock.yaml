@@ -30,6 +30,7 @@ jobs:
       - name: Fail if nixpkgs is up-to-date
         id: nixpkgs-update
         if: ${{ ! inputs.force }}
+        continue-on-error: true
         run: |
           nix flake update nixpkgs
           git diff --quiet && exit 1 || exit 0
