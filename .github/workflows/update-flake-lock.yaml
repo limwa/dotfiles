@@ -30,8 +30,9 @@ jobs:
       - name: Only run if nixpkgs is updated
         if: ${{ ! inputs.force }}
         run: |
-          nix flake update nixpkgs
-          git diff --quiet || (echo "Nixpkgs has no new updates" && exit 1)
+          nix flake update nixpkgs && git diff --quiet || exit 0
+          echo "Nixpkgs has not been updated"
+          exit 1
 
       - name: Update flake.lock
         id: update
