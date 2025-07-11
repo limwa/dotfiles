@@ -38,7 +38,7 @@ jobs:
 
       - name: Update flake.lock
         id: update
-        if: ${{ !inputs.force && steps.nixpkgs-update.outputs.changed }}
+        if: ${{ inputs.force || fromJSON(steps.nixpkgs-update.outputs.changed) }}
         uses: DeterminateSystems/update-flake-lock@main
         with:
           commit-msg: "build: update flake.lock"   # Commit message to be used
