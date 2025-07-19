@@ -20,7 +20,7 @@
       trusted-users = ["@wheel"];
 
       # Build binaries from source if a connection to the cache is not possible.
-      fallback = true;
+      # fallback = true;
 
       # Optimize the Nix store by deduplicating store paths.
       auto-optimise-store = true;
