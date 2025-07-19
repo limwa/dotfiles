@@ -1,6 +1,7 @@
 {
   user,
   config,
+  pkgs,
   ...
 }: {
   # VirtualBox
@@ -13,6 +14,8 @@
     enable = true;
     enableKvm = useKvm;
     addNetworkInterface = !useKvm;
+
+    package = pkgs.stable.virtualbox;
   };
 
   # Add vboxusers group to the user.
