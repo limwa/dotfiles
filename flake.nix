@@ -3,10 +3,7 @@
 
   inputs = {
     # Nixpkgs (NixOS unstable)
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
-
-    # Nixpkgs (NixOS 25.05)
-    nixpkgs-stable.url = "github:nixos/nixpkgs/9807714d6944a957c2e036f84b0ff8caf9930bc0";
+    nixpkgs.url = "github:nixos/nixpkgs/9807714d6944a957c2e036f84b0ff8caf9930bc0";
 
     # Agenix
     agenix.url = "github:ryantm/agenix";
@@ -37,7 +34,6 @@
   outputs = {
     self,
     nixpkgs,
-    nixpkgs-stable,
     disko,
     flake-utils,
     ...
@@ -262,22 +258,7 @@
             {
               inherit system;
 
-              modules =
-                commonModules
-                ++ [
-                  {
-                    nixpkgs.overlays = [
-                      (self: super: {
-                        stable = import nixpkgs-stable {
-                          inherit system;
-                          config = {
-                            allowUnfree = true;
-                          };
-                        };
-                      })
-                    ];
-                  }
-                ];
+              modules = commonModules;
 
               specialArgs =
                 self.commonArgs

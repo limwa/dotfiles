@@ -8,7 +8,7 @@
     enable = true;
     plugins = with pkgs; [
       networkmanager-fortisslvpn
-      stable.networkmanager-iodine
+      networkmanager-iodine
       networkmanager-l2tp
       networkmanager-openconnect
       networkmanager-openvpn

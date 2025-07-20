@@ -17,13 +17,13 @@
     imagemagick
     insomnia
     jetbrains-toolbox
-    stable.jetbrains.idea-ultimate
+    jetbrains.idea-ultimate
     libreoffice
     slack
     spotify
     vscode
     yt-dlp
-    stable.zed-editor
+    zed-editor
     zotero
     custom.tableplus
     custom.warp-terminal
