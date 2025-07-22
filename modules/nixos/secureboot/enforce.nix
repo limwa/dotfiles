@@ -22,5 +22,9 @@ in {
   boot.lanzaboote = {
     enable = true;
     pkiBundle = "/etc/secureboot";
+
+    settings = {
+      default = "@saved";
+    };
   };
 }
