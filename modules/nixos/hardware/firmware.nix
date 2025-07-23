@@ -3,6 +3,7 @@
 
   # Enable all firmware.
   hardware.enableAllFirmware = true;
+  hardware.enableAllHardware = true;
 
   # Enable fwupd and install gnome-software to manage firmware.
   # https://nixos.wiki/wiki/Fwupd
