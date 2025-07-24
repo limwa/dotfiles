@@ -27,5 +27,6 @@
     gnomeExtensions.astra-monitor
     gnomeExtensions.dash-to-dock
     gnomeExtensions.media-controls
+    gnomeExtensions.tiling-shell
   ];
 }
