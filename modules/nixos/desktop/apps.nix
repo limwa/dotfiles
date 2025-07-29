@@ -11,7 +11,7 @@
     code-cursor
     discord
     eclipses.eclipse-modeling
-    # warp-terminal
+    warp-terminal
     google-chrome
     gthumb
     imagemagick
@@ -26,6 +26,5 @@
     zed-editor
     zotero
     custom.tableplus
-    custom.warp-terminal
   ];
 }
