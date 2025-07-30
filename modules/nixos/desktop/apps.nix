@@ -12,6 +12,7 @@
     discord
     eclipses.eclipse-modeling
     warp-terminal
+    gnome-boxes
     google-chrome
     gthumb
     imagemagick
