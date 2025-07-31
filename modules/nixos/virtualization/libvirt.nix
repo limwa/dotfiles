@@ -16,12 +16,10 @@
       package = pkgs.qemu_full;
 
       swtpm.enable = true;
-      /*
-        ovmf = {
+      ovmf = {
         enable = true;
         packages = [pkgs.OVMFFull.fd];
       };
-      */
     };
   };
 
