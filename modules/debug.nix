@@ -1,4 +1,24 @@
-{pkgs, ...}: {
+{
+  user,
+  pkgs,
+  ...
+}: {
+  home-manager.users.${user.login} = {
+    # SSH
+    # https://mynixos.com/home-manager/options/programs.ssh
+    programs.ssh = {
+      matchBlocks = {
+        # Easy way to connect to VM for thesis development.
+        thesis = {
+          host = "thesis";
+          hostname = "127.0.0.1";
+          user = "lima";
+          port = 6922;
+        };
+      };
+    };
+  };
+
   # https://unix.stackexchange.com/questions/739363/a-systemd-service-that-runs-just-before-shutdown-and-uses-a-mounted-filesystem
   systemd.services."dump-shutdown-processes" = {
     unitConfig = {
