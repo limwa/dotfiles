@@ -200,11 +200,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1754451631,
-        "narHash": "sha256-xstEcMQWmT43VcTibcOvOd7naoZkA/jJoxWFvvI7CKg=",
+        "lastModified": 1754457347,
+        "narHash": "sha256-QN9yZ1L5EmR16NNM+hNNzMjARk+FPjUeSE/ds4Kms0E=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "8f02266b8e49c1c6bbe122b5602e1c877e42c5be",
+        "rev": "ad5d2b4aa770fdc74c80fd682fee0b00a8ad7991",
         "type": "github"
       },
       "original": {
@@ -343,17 +343,17 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1754452033,
-        "narHash": "sha256-T7D0HbNOSxoYwdl6qE++YsNTHnLxW7jpFTwdU1LvcaA=",
+        "lastModified": 1754393696,
+        "narHash": "sha256-IPT+OOcB53dQqgbZbqcWJyCbdNhu1pEu+4abGmlHXXc=",
         "owner": "limwa",
         "repo": "nixpkgs",
-        "rev": "55c7c1dcd8c298c1f779a50d51876573a055ef33",
+        "rev": "355cef43615d1cd4d8be4d561dde0c1d00438939",
         "type": "github"
       },
       "original": {
         "owner": "limwa",
-        "ref": "dotfiles",
         "repo": "nixpkgs",
+        "rev": "355cef43615d1cd4d8be4d561dde0c1d00438939",
         "type": "github"
       }
     },

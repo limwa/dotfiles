@@ -26,4 +26,7 @@
 
   # Enable Tailscale.
   services.tailscale.enable = true;
+
+  # Use nftables as the default firewall backend
+  networking.nftables.enable = true;
 }
