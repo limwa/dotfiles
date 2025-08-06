@@ -12,6 +12,7 @@
   # Enable libvirtd.
   virtualisation.libvirtd = {
     enable = true;
+    onBoot = "ignore";
 
     nss = {
       enable = true;
