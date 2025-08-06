@@ -200,11 +200,11 @@
         ]
       },
       "locked": {
-        "lastModified": 1754457347,
-        "narHash": "sha256-QN9yZ1L5EmR16NNM+hNNzMjARk+FPjUeSE/ds4Kms0E=",
+        "lastModified": 1754495836,
+        "narHash": "sha256-ON5VEr70cAUR0YOHuVgLlgq9HarBqfbWsxknlmHnM+o=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "ad5d2b4aa770fdc74c80fd682fee0b00a8ad7991",
+        "rev": "88913c98fe674e10302bbdb71b4e173f527b69c2",
         "type": "github"
       },
       "original": {
@@ -343,17 +343,17 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1754393696,
-        "narHash": "sha256-IPT+OOcB53dQqgbZbqcWJyCbdNhu1pEu+4abGmlHXXc=",
+        "lastModified": 1754499627,
+        "narHash": "sha256-Wudr8uTh+RlrMNYJK8Ou47uxneOKIYrQ4TYd0pI0ZnA=",
         "owner": "limwa",
         "repo": "nixpkgs",
-        "rev": "355cef43615d1cd4d8be4d561dde0c1d00438939",
+        "rev": "ae282db796b9db950e39b5b4fa0c1ca3e85da8f7",
         "type": "github"
       },
       "original": {
         "owner": "limwa",
+        "ref": "dotfiles-libvirt-fix",
         "repo": "nixpkgs",
-        "rev": "355cef43615d1cd4d8be4d561dde0c1d00438939",
         "type": "github"
       }
     },
