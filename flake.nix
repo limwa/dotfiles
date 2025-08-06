@@ -3,7 +3,7 @@
 
   inputs = {
     # Nixpkgs (NixOS unstable)
-    nixpkgs.url = "github:limwa/nixpkgs/dotfiles-libvirt-fix";
+    nixpkgs.url = "github:limwa/nixpkgs/355cef43615d1cd4d8be4d561dde0c1d00438939";
 
     # Agenix
     agenix.url = "github:ryantm/agenix";
