@@ -22,6 +22,8 @@
       # if packets are still dropped, they will show up in dmesg
       logReversePathDrops = true;
 
+      logRefusedPackets = true;
+
       /*
       extraCommands = ''
         ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --sport ${wireguard.port} -j RETURN
