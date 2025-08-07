@@ -13,6 +13,7 @@
   virtualisation.libvirtd = {
     enable = true;
     onBoot = "ignore";
+    onShutdown = "shutdown";
 
     nss = {
       enable = true;
