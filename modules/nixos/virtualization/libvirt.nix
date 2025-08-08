@@ -1,7 +1,7 @@
 {
-  user,
-  self,
+  config,
   pkgs,
+  user,
   ...
 }: {
   # Libvirt and Virt-manager
@@ -28,9 +28,8 @@
     };
   };
 
-  specialisation."with-good-libvirt".configuration = {
-    virtualisation.libvirtd.package = self.inputs.nixpkgs-good.legacyPackages.x86_64-linux.libvirt;
-  };
+  # Do not block networking.
+  networking.firewall.trustedInterfaces = config.virtualisation.libvirtd.allowedBridges;
 
   # Add libvirtd group to the user.
   users.users.${user.login}.extraGroups = ["libvirtd"];
