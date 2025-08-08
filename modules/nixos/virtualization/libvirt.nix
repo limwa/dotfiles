@@ -1,5 +1,6 @@
 {
   user,
+  self,
   pkgs,
   ...
 }: {
@@ -12,6 +13,7 @@
   # Enable libvirtd.
   virtualisation.libvirtd = {
     enable = true;
+
     onBoot = "ignore";
     onShutdown = "shutdown";
 
@@ -24,6 +26,10 @@
       package = pkgs.qemu_full;
       swtpm.enable = true;
     };
+  };
+
+  specialisation."with-good-libvirt".configuration = {
+    virtualisation.libvirtd.package = self.inputs.nixpkgs-good.legacyPackages.x86_64-linux.libvirt;
   };
 
   # Add libvirtd group to the user.
