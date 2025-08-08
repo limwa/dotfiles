@@ -30,5 +30,10 @@
   specialisation."with-nftables".configuration = {
     # Use nftables as the default firewall backend
     networking.nftables.enable = true;
+
+    networking.firewall.interfaces."virbr0" = {
+      allowedTCPPorts = [53];
+      allowedUDPPorts = [53 67];
+    };
   };
 }
