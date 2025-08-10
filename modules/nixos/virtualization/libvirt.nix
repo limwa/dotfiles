@@ -29,9 +29,7 @@
   };
 
   # Do not block networking.
-  networking.firewall.trustedInterfaces = config.virtualisation.libvirtd.allowedBridges;
-
-  virtualisation.libvirtd.allowedBridges = ["virbr0" "virbr1"];
+  # networking.firewall.trustedInterfaces = config.virtualisation.libvirtd.allowedBridges;
 
   # Add libvirtd group to the user.
   users.users.${user.login}.extraGroups = ["libvirtd"];
