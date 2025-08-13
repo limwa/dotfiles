@@ -212,7 +212,6 @@
           ./modules/nixos/virtualization/virtualbox.nix
           ./modules/nixos/bootloader.nix
           ./modules/nixos/common.nix
-          ./modules/nixos/distributed-builds.nix
           ./modules/nixos/dns-over-tls.nix
           ./modules/nixos/dynamic-binaries.nix
           ./modules/nixos/flatpak.nix
@@ -226,6 +225,7 @@
           ./modules/nixos/networking.nix
           ./modules/nixos/nix.nix
           ./modules/nixos/rebuild.nix
+          ./modules/nixos/remote-builders.nix
           ./modules/nixos/user.nix
           ./modules/nixos/wireguard.nix
           ./modules/home-manager/p10k

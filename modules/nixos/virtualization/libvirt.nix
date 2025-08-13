@@ -1,5 +1,4 @@
 {
-  config,
   pkgs,
   user,
   ...
@@ -27,9 +26,6 @@
       swtpm.enable = true;
     };
   };
-
-  # Do not block networking.
-  # networking.firewall.trustedInterfaces = config.virtualisation.libvirtd.allowedBridges;
 
   # Add libvirtd group to the user.
   users.users.${user.login}.extraGroups = ["libvirtd"];
