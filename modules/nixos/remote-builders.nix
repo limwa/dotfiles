@@ -3,7 +3,7 @@
 
   nix.buildMachines = [
     {
-      hostName = "LIMA";
+      hostName = "lima";
       sshUser = "remotebld";
       sshKey = "/root/.ssh/remotebld";
       system = pkgs.stdenv.hostPlatform.system;
