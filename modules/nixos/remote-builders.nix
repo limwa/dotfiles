@@ -8,6 +8,7 @@
       sshKey = "/root/.ssh/remotebld";
       system = "x86_64-linux";
       supportedFeatures = ["kvm" "big-parallel"];
+      protocol = "ssh-ng";
       maxJobs = 16;
     }
   ];
