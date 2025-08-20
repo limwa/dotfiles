@@ -7,6 +7,7 @@
   nixos-hardware = self.inputs.nixos-hardware;
 in {
   imports = [
+    "${nixos-hardware}/common/cpu/amd"
     "${nixos-hardware}/common/cpu/amd/pstate.nix"
     "${nixos-hardware}/common/cpu/amd/zenpower.nix"
     "${nixos-hardware}/common/gpu/nvidia/ampere"
@@ -15,21 +16,29 @@ in {
     "${nixos-hardware}/common/pc/ssd"
   ];
 
-  services.xserver.videoDrivers = ["nvidia"];
+  boot.kernelModules = ["amdgpu"];
+  services.xserver.videoDrivers = [
+    "amdgpu"
+    "nvidia"
+  ];
 
   boot.extraModulePackages = with config.boot.kernelPackages; [
     lenovo-legion-module
   ];
 
-  hardware.nvidia = {
-    dynamicBoost.enable = lib.mkDefault true;
-    modesetting.enable = lib.mkDefault true;
-    powerManagement.enable = lib.mkDefault true;
-    powerManagement.finegrained = lib.mkDefault true;
+  hardware = {
+    amdgpu.initrd.enable = false;
 
-    prime = {
-      amdgpuBusId = "PCI:53:0:0";
-      nvidiaBusId = "PCI:1:0:0";
+    nvidia = {
+      dynamicBoost.enable = lib.mkDefault true;
+      modesetting.enable = lib.mkDefault true;
+      powerManagement.enable = lib.mkDefault true;
+      powerManagement.finegrained = lib.mkDefault true;
+
+      prime = {
+        amdgpuBusId = "PCI:53:0:0";
+        nvidiaBusId = "PCI:1:0:0";
+      };
     };
   };
 
