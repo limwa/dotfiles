@@ -13,9 +13,6 @@
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
 
-    # Flake Utils
-    flake-utils.url = "github:numtide/flake-utils";
-
     # Home Manager
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -29,144 +26,151 @@
 
     # NixOS Hardware
     nixos-hardware.url = "github:NixOS/nixos-hardware";
+
+    # Flake Utils
+    utils.url = "github:limwa/nix-flake-utils";
   };
 
   outputs = {
     self,
     nixpkgs,
     disko,
-    flake-utils,
+    utils,
     ...
-  }: let
-    allSystemsFlakeAttrs = flake-utils.lib.eachDefaultSystem (
-      system: let
-        pkgs = import nixpkgs {inherit system;};
-      in {
-        # Use alejandra to format the Nix code
-        formatter = pkgs.alejandra;
+  }:
+    utils.lib.mkFlakeWith {
+      forEachSystem = system: {
+        inherit system;
 
-        packages = {
-          create-update-summary = pkgs.writeShellApplication {
-            name = "dotfiles-create-update-summary";
+        self = utils.lib.forSystem self system;
 
-            runtimeInputs = with pkgs; [
-              yq-go
-            ];
-
-            text = ''
-              flake_dir="$(realpath "''${1:-.}")"
-              pushd "$flake_dir"
-
-              build_dir="$(mktemp -d)"
-              trap 'rm -rf "$build_dir"' EXIT
-
-              # Create a summary file
-              summary_file="$build_dir/summary.md"
-
-              {
-                echo "# Package Changes"
-                echo
-              } > "$summary_file"
-
-              # For all available hosts, the script will try to build their
-              # current and new configurations, as well as output the
-              # differences between them, if any.
-
-              current_config_ref="$(git rev-parse --abbrev-ref HEAD)"
-              current_config_commit="$(git rev-parse "$current_config_ref")"
-
-              for host in $(nix eval --json ".#meta.hosts" | yq -p json '.[]'); do
-                echo
-                echo "> Host: $host"
-
-                # Get previous configuration
-                old_config_commit="$(git rev-parse --verify --quiet "$host^{}" || true)"
-                if [ -z "$old_config_commit" ] || [ "$old_config_commit" == "$current_config_commit" ]; then
-                  echo
-                  echo ">> No changes detected, skipping."
-                  echo ">>> Old configuration commit: $old_config_commit"
-                  echo ">>> Current configuration commit: $current_config_commit"
-
-                  {
-                    echo "## $host"
-                    echo
-                    echo "$host is up to date."
-                    echo
-                  } >> "$summary_file"
-
-                  continue
-                fi
-
-                diff_file="$build_dir/$host.diff"
-                log_file="$build_dir/$host.log"
-
-                echo
-                echo ">> Current Configuration"
-                git checkout --quiet "$current_config_commit"
-
-                # https://stackoverflow.com/questions/692000/how-do-i-write-standard-error-to-a-file-while-using-tee-with-a-pipe
-                if current_config_drv="$(nix eval --raw .#nixosConfigurations."$host".config.system.build.toplevel.drvPath 2> >(tee "$log_file" >&2))"; then
-                  echo
-                  echo ">> Old Configuration"
-                  git checkout --quiet "$old_config_commit"
-
-                  old_config_drv="$(nix eval --raw .#nixosConfigurations."$host".config.system.build.toplevel.drvPath)"
-                  nix store diff-closures "$old_config_drv" "$current_config_drv" > "$diff_file"
-
-                  {
-                    echo "## $host"
-                    echo
-                    echo "$host was successfully built."
-                    if [ -s "$diff_file" ]; then
-                      echo
-                      echo "### \`nix store diff-closures [old] [new]\`"
-                      echo
-                      echo '```asc'
-                      cat "$diff_file"
-                      echo '```'
-                      echo
-                    else
-                      echo "There were no changes detected."
-                      echo
-                    fi
-                  } >> "$summary_file"
-
-                else
-
-                  {
-                    echo "## $host"
-                    echo
-                    echo "$host failed to build."
-                    echo
-                  } >> "$summary_file"
-
-                fi
-
-                if [ -s "$log_file" ]; then
-                  echo "### Build log"
-                  echo
-                  echo '```nix'
-                  cat "$log_file"
-                  echo '```'
-                  echo
-                fi
-
-              done
-
-              sed -i -e $'s/\x1b\[[0-9;]*m//g' "$summary_file"
-
-              git checkout --quiet "$current_config_ref"
-              cp "$summary_file" summary.md
-
-              popd
-            '';
-          };
+        pkgs = import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
         };
-      }
-    );
-  in
-    allSystemsFlakeAttrs
-    // {
+      };
+    } {
+      # Use alejandra to format the Nix code
+      formatter = {pkgs, ...}: pkgs.alejandra;
+
+      packages = {pkgs, ...}: {
+        create-update-summary = pkgs.writeShellApplication {
+          name = "dotfiles-create-update-summary";
+
+          runtimeInputs = with pkgs; [
+            yq-go
+          ];
+
+          text = ''
+            flake_dir="$(realpath "''${1:-.}")"
+            pushd "$flake_dir"
+
+            build_dir="$(mktemp -d)"
+            trap 'rm -rf "$build_dir"' EXIT
+
+            # Create a summary file
+            summary_file="$build_dir/summary.md"
+
+            {
+              echo "# Package Changes"
+              echo
+            } > "$summary_file"
+
+            # For all available hosts, the script will try to build their
+            # current and new configurations, as well as output the
+            # differences between them, if any.
+
+            current_config_ref="$(git rev-parse --abbrev-ref HEAD)"
+            current_config_commit="$(git rev-parse "$current_config_ref")"
+
+            for host in $(nix eval --json ".#meta.hosts" | yq -p json '.[]'); do
+              echo
+              echo "> Host: $host"
+
+              # Get previous configuration
+              old_config_commit="$(git rev-parse --verify --quiet "$host^{}" || true)"
+              if [ -z "$old_config_commit" ] || [ "$old_config_commit" == "$current_config_commit" ]; then
+                echo
+                echo ">> No changes detected, skipping."
+                echo ">>> Old configuration commit: $old_config_commit"
+                echo ">>> Current configuration commit: $current_config_commit"
+
+                {
+                  echo "## $host"
+                  echo
+                  echo "$host is up to date."
+                  echo
+                } >> "$summary_file"
+
+                continue
+              fi
+
+              diff_file="$build_dir/$host.diff"
+              log_file="$build_dir/$host.log"
+
+              echo
+              echo ">> Current Configuration"
+              git checkout --quiet "$current_config_commit"
+
+              # https://stackoverflow.com/questions/692000/how-do-i-write-standard-error-to-a-file-while-using-tee-with-a-pipe
+              if current_config_drv="$(nix eval --raw .#nixosConfigurations."$host".config.system.build.toplevel.drvPath 2> >(tee "$log_file" >&2))"; then
+                echo
+                echo ">> Old Configuration"
+                git checkout --quiet "$old_config_commit"
+
+                old_config_drv="$(nix eval --raw .#nixosConfigurations."$host".config.system.build.toplevel.drvPath)"
+                nix store diff-closures "$old_config_drv" "$current_config_drv" > "$diff_file"
+
+                {
+                  echo "## $host"
+                  echo
+                  echo "$host was successfully built."
+                  if [ -s "$diff_file" ]; then
+                    echo
+                    echo "### \`nix store diff-closures [old] [new]\`"
+                    echo
+                    echo '```asc'
+                    cat "$diff_file"
+                    echo '```'
+                    echo
+                  else
+                    echo "There were no changes detected."
+                    echo
+                  fi
+                } >> "$summary_file"
+
+              else
+
+                {
+                  echo "## $host"
+                  echo
+                  echo "$host failed to build."
+                  echo
+                } >> "$summary_file"
+
+              fi
+
+              if [ -s "$log_file" ]; then
+                echo "### Build log"
+                echo
+                echo '```nix'
+                cat "$log_file"
+                echo '```'
+                echo
+              fi
+
+            done
+
+            sed -i -e $'s/\x1b\[[0-9;]*m//g' "$summary_file"
+
+            git checkout --quiet "$current_config_ref"
+            cp "$summary_file" summary.md
+
+            popd
+          '';
+        };
+      };
+
       # Common arguments passed to all hosts' configurations
       commonArgs = {
         initialPassword = "nixos";
