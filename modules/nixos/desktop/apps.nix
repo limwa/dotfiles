@@ -15,6 +15,7 @@
     code-cursor
     discord
     eclipses.eclipse-modeling
+    element-web
     warp-terminal
     gnome-boxes
     google-chrome
