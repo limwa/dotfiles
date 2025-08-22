@@ -41,13 +41,8 @@
     utils.lib.mkFlakeWith {
       forEachSystem = system: {
         inherit system;
-
         self = utils.lib.forSystem self system;
-
-        pkgs = import nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
-        };
+        pkgs = import nixpkgs {inherit system;};
       };
     } {
       # Use alejandra to format the Nix code
@@ -224,7 +219,6 @@
           ./modules/nixos/kde-connect.nix
           ./modules/nixos/kernel.nix
           ./modules/nixos/keyboard.nix
-          ./modules/nixos/lix.nix
           ./modules/nixos/locale.nix
           ./modules/nixos/networking.nix
           ./modules/nixos/nix.nix
