@@ -15,7 +15,7 @@
     code-cursor
     discord
     eclipses.eclipse-modeling
-    element-web
+    fractal
     warp-terminal
     gnome-boxes
     google-chrome
