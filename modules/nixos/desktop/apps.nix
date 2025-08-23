@@ -11,7 +11,7 @@
 
   # User-scoped apps
   users.users.${user.login}.packages = with pkgs; [
-    android-studio-full
+    android-studio
     code-cursor
     discord
     eclipses.eclipse-modeling
