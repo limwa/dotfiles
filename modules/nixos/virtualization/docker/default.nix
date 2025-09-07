@@ -1,4 +1,8 @@
-{user, ...}: {
+{
+  user,
+  pkgs,
+  ...
+}: {
   # Docker
   # https://nixos.wiki/wiki/Docker
 
@@ -11,6 +15,11 @@
     # Prune unused Docker resources automatically.
     autoPrune.enable = true;
     autoPrune.dates = "daily";
+
+    # Don't store passwords in plain text.
+    extraPackages = with pkgs; [
+      docker-credential-helpers
+    ];
   };
 
   # Add docker group to the user.
