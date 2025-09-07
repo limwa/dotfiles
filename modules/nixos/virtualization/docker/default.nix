@@ -1,4 +1,5 @@
 {
+  lib,
   user,
   pkgs,
   ...
@@ -15,12 +16,12 @@
     # Prune unused Docker resources automatically.
     autoPrune.enable = true;
     autoPrune.dates = "daily";
-
-    # Don't store passwords in plain text.
-    extraPackages = with pkgs; [
-      docker-credential-helpers
-    ];
   };
+
+  # Don't store passwords in plain text.
+  environment.systemPackages = with pkgs; [
+    docker-credential-helpers
+  ];
 
   # Add docker group to the user.
   users.users.${user.login}.extraGroups = ["docker"];
