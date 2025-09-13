@@ -28,6 +28,9 @@
   services.tailscale.enable = true;
 
   # Enable firewalld.
-  services.firewalld.enable = true;
   networking.nftables.enable = true;
+  services.firewalld = {
+    enable = true;
+    package = pkgs.firewalld-gui;
+  };
 }
