@@ -26,4 +26,8 @@
 
   # Enable Tailscale.
   services.tailscale.enable = true;
+
+  # Enable firewalld.
+  services.firewalld.enable = true;
+  networking.nftables.enable = true;
 }
