@@ -23,6 +23,7 @@
     pciutils
     wirelesstools
 
+    gnomeExtensions.appindicator
     gnomeExtensions.applications-menu
     gnomeExtensions.astra-monitor
     gnomeExtensions.dash-to-dock
