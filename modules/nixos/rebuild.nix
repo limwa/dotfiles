@@ -167,7 +167,7 @@
           echo "Rebuilding NixOS..."
           echo
 
-          sudo nixos-rebuild boot --flake .#
+          sudo nixos-rebuild boot --flake .# "$@"
           sudo nixos-rebuild switch --flake .# || true
 
           echo
@@ -196,7 +196,7 @@
         # Show changes
         git diff --staged '*.nix'
 
-        build_and_switch
+        build_and_switch "$@"
 
         # Generate commit message
         message=$(nixos-rebuild list-generations --json | yq -p=json ".[] | select(.current == true) | \"rebuild($HOST): generation \(.generation), NixOS \(.nixosVersion) with Linux Kernel \(.kernelVersion)\"")
