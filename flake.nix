@@ -21,8 +21,10 @@
     lanzaboote.url = "github:nix-community/lanzaboote/v0.4.2";
     # lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
 
-    # Nix Alien (doesn't follow nixpkgs to ensure index is accurate)
+    # Nix Alien
     nix-alien.url = "github:thiagokokada/nix-alien";
+    nix-alien.inputs.nixpkgs.follows = "nixpkgs";
+    nix-alien.inputs.nix-index-database.follows = "nix-index-database";
 
     # Nix Index Database
     nix-index-database.url = "github:nix-community/nix-index-database";
