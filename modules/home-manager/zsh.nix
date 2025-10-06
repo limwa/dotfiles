@@ -37,7 +37,6 @@
           # "ohmyzsh/ohmyzsh path:plugins/gh"
           "ohmyzsh/ohmyzsh path:plugins/kubectl"
           # "ohmyzsh/ohmyzsh path:plugins/asdf"
-          "ohmyzsh/ohmyzsh path:plugins/command-not-found"
           "ohmyzsh/ohmyzsh path:plugins/git"
           "ohmyzsh/ohmyzsh path:plugins/magic-enter"
           "ohmyzsh/ohmyzsh path:plugins/pip"
