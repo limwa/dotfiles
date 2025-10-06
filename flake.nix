@@ -24,6 +24,10 @@
     # Nix Alien (doesn't follow nixpkgs to ensure index is accurate)
     nix-alien.url = "github:thiagokokada/nix-alien";
 
+    # Nix Index Database
+    nix-index-database.url = "github:nix-community/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
+
     # NixOS Hardware
     nixos-hardware.url = "github:NixOS/nixos-hardware";
 
@@ -35,6 +39,7 @@
     self,
     nixpkgs,
     disko,
+    nix-index-database,
     utils,
     ...
   }:
@@ -194,6 +199,7 @@
       nixosConfigurations = let
         commonModules = [
           disko.nixosModules.disko
+          nix-index-database.nixosModules.nix-index
           ./modules/debug.nix
           ./modules/nixos/audio
           ./modules/nixos/audio/soundwire.nix

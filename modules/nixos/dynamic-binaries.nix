@@ -19,4 +19,7 @@ in {
 
   # Optional, but this is needed for `nix-alien-ld` command
   programs.nix-ld.enable = true;
+
+  # Enable comma
+  programs.nix-index-database.comma.enable = true;
 }
