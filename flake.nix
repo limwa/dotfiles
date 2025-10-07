@@ -241,6 +241,7 @@
           ./modules/home-manager/ghostty.nix
           ./modules/home-manager/git.nix
           ./modules/home-manager/ssh.nix
+          ./modules/home-manager/variables.nix
           ./modules/home-manager/zsh.nix
           ./packages/overlay.nix
         ];
