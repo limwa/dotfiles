@@ -9,6 +9,10 @@
     agenix.url = "github:ryantm/agenix";
     agenix.inputs.nixpkgs.follows = "nixpkgs";
 
+    # Direnv Instant
+    direnv-instant.url = "github:Mic92/direnv-instant";
+    direnv-instant.inputs.nixpkgs.follows = "nixpkgs";
+
     # Disko
     disko.url = "github:nix-community/disko";
     disko.inputs.nixpkgs.follows = "nixpkgs";
@@ -26,12 +30,12 @@
     nix-alien.inputs.nixpkgs.follows = "nixpkgs";
     nix-alien.inputs.nix-index-database.follows = "nix-index-database";
 
+    # NixOS Hardware
+    nixos-hardware.url = "github:NixOS/nixos-hardware";
+
     # Nix Index Database
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
-
-    # NixOS Hardware
-    nixos-hardware.url = "github:NixOS/nixos-hardware";
 
     # Flake Utils
     utils.url = "github:limwa/nix-flake-utils";
