@@ -12,7 +12,7 @@
       enable = true;
       nix-direnv.enable = true;
 
-      package = self.inputs.direnv-instant.packages.${pkgs.stdenv.hostPlatform.system}.default;
+      # package = self.inputs.direnv-instant.packages.${pkgs.stdenv.hostPlatform.system}.default;
     };
   };
 }
