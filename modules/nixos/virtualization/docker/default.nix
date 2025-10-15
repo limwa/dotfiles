@@ -14,7 +14,7 @@
 
     # Prune unused Docker resources automatically.
     autoPrune.enable = true;
-    autoPrune.dates = "daily";
+    autoPrune.dates = "weekly";
   };
 
   # Don't store passwords in plain text.
