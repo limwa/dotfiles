@@ -241,6 +241,7 @@
           ./modules/nixos/wireguard.nix
           ./modules/home-manager/p10k
           ./modules/home-manager/bat.nix
+          ./modules/home-manager/delta.nix
           ./modules/home-manager/direnv.nix
           ./modules/home-manager/gh.nix
           ./modules/home-manager/ghostty.nix

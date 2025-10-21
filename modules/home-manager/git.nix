@@ -12,12 +12,6 @@ in {
       enable = true;
       package = pkgs.gitFull;
 
-      userName = lib.mkDefault user.displayName;
-      userEmail = lib.mkDefault user.email;
-
-      # Enable delta for diff viewing.
-      delta.enable = true;
-
       # Enable Git LFS.
       lfs.enable = true;
 
@@ -31,7 +25,10 @@ in {
         signByDefault = true;
       };
 
-      extraConfig = {
+      settings = {
+        user.name = lib.mkDefault user.displayName;
+        user.email = lib.mkDefault user.email;
+
         commit.verbose = true; # Show diff of changes in commit message editor.
         diff.colorMoved = "default"; # Highlight moved lines in diff.
         diff.algorithm = "histogram"; # Use histogram diff algorithm.
