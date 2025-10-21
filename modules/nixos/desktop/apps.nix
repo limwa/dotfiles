@@ -21,13 +21,13 @@
     google-chrome
     gthumb
     imagemagick
-    insomnia
     jetbrains-toolbox
     jetbrains.idea-ultimate
     libreoffice
     slack
     spotify
     vscode
+    yaak
     yt-dlp
     zed-editor
     zotero
