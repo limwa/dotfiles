@@ -1,9 +1,4 @@
-{
-  pkgs,
-  user,
-  ...
-}: {
-  services.udev.packages = [pkgs.android-udev-rules];
+{user, ...}: {
   users.users.${user.login}.extraGroups = ["adbusers" "plugdev"];
 
   # Create groups if they don't exist yet
