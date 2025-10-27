@@ -9,8 +9,7 @@
     ../../modules/nixos/hardware/graphics/amdgpu.nix
     ../../modules/nixos/hardware/graphics/nvidia.nix
     ../../modules/nixos/hardware/thunderbolt.nix
-    ../../modules/nixos/virtualization/docker/btrfs.nix
-    ../../modules/nixos/virtualization/docker/nvidia.nix
+    ../../modules/nixos/virtualization/podman/nvidia.nix
     ../../modules/nixos/secureboot/enforce.nix
     ./modules/hardware.nix
   ];
