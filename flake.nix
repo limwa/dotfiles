@@ -3,7 +3,7 @@
 
   inputs = {
     # Nixpkgs (NixOS unstable)
-    nixpkgs.url = "github:limwa/nixpkgs/dotfiles-next";
+    nixpkgs.url = "github:limwa/nixpkgs/dotfiles";
 
     # Agenix
     agenix.url = "github:ryantm/agenix";
