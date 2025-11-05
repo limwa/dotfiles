@@ -1,0 +1,13 @@
+diff --git a/Cargo.toml b/Cargo.toml
+index 53503cb..96aed3e 100644
+--- a/Cargo.toml
++++ b/Cargo.toml
+@@ -12,7 +12,7 @@ ignored = ["serde_bytes"] # Used by the SecretFile API.
+ [profile.release]
+ debug = true
+ lto = "thin"
+-codegen-units = 1
++codegen-units = 8
+ 
+ [profile.dev.package."*"]
+ opt-level = 3

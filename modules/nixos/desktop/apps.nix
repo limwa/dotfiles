@@ -15,7 +15,6 @@
     code-cursor
     discord
     eclipses.eclipse-modeling
-    fractal
     warp-terminal
     gnome-boxes
     google-chrome
@@ -31,6 +30,7 @@
     yt-dlp
     zed-editor
     zotero
+    custom.fractal
     custom.tableplus
   ];
 }
