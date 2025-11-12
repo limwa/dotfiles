@@ -20,6 +20,7 @@
   };
 
   environment.systemPackages = with pkgs; [
+    docker-credential-helpers
     podman-desktop
   ];
 
