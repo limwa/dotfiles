@@ -218,7 +218,7 @@
           ./modules/nixos/hardware/printing.nix
           ./modules/nixos/hardware/tlp.nix
           ./modules/nixos/secureboot
-          ./modules/nixos/virtualization/docker
+          ./modules/nixos/virtualization/podman
           ./modules/nixos/virtualization/libvirt.nix
           ./modules/nixos/virtualization/virtualbox.nix
           ./modules/nixos/bootloader.nix
