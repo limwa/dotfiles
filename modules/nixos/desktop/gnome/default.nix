@@ -29,6 +29,5 @@
     gnomeExtensions.dash-to-dock
     # gnomeExtensions.media-controls
     gnomeExtensions.tiling-shell
-    gnomeExtensions.vicinae
   ];
 }
