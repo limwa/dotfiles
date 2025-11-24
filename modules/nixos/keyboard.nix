@@ -13,4 +13,7 @@
       else "us,pt";
     xkb.options = "grp:win_space_toggle";
   };
+
+  i18n.inputMethod.enable = true;
+  i18n.inputMethod.type = "ibus";
 }
