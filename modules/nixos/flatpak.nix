@@ -6,7 +6,7 @@
   services.flatpak.enable = true;
 
   # Allow graphical installation of Flatpak apps.
-  environment.systemPackages = [pkgs.gnome-software];
+  services.gnome.gnome-software.enable = true;
 
   # Automatically configure the Flathub remote.
   systemd.services.flatpak-repo = {
