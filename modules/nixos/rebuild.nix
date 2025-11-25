@@ -190,7 +190,8 @@
         trap "unstash_remaining" EXIT
 
         # Format files with `nix fmt` and report errors, if any
-        nix fmt . &> /dev/null || nix fmt .
+        readarray -t fmt_files < <(git diff --staged --name-only '*.nix')
+        nix fmt "''${fmt_files[@]}" &> /dev/null || nix fmt "''${fmt_files[@]}"
         git add .
 
         # Show changes
