@@ -1,0 +1,4 @@
+[submodule "vendor/nixpkgs"]
+	path = vendor/nixpkgs
+	url = git@github.com:limwa/nixpkgs.git
+	branch = dotfiles
