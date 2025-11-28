@@ -191,8 +191,10 @@
 
         # Format files with `nix fmt` and report errors, if any
         readarray -t fmt_files < <(git diff --staged --name-only '*.nix')
-        nix fmt "''${fmt_files[@]}" &> /dev/null || nix fmt "''${fmt_files[@]}"
-        git add .
+        if [[ ''${#fmt_files[@]} -gt 0 ]]; then
+          nix fmt "''${fmt_files[@]}" &> /dev/null || nix fmt "''${fmt_files[@]}"
+          git add .
+        fi
 
         # Show changes
         git diff --staged '*.nix'
