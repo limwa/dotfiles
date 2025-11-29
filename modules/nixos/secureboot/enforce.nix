@@ -24,7 +24,7 @@ in {
     pkiBundle = "/etc/secureboot";
 
     settings = {
-      default = "@saved";
+      # default = "@saved";
     };
   };
 }

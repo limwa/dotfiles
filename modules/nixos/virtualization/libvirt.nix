@@ -22,7 +22,7 @@
     };
 
     qemu = {
-      package = pkgs.qemu_full;
+      package = pkgs.qemu; #_full;
       swtpm.enable = true;
     };
   };
