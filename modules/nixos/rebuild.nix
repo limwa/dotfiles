@@ -167,8 +167,8 @@
           echo "Rebuilding NixOS..."
           echo
 
-          sudo nixos-rebuild boot --flake .# "$@"
-          sudo nixos-rebuild switch --flake .# || true
+          nixos-rebuild boot --sudo --flake .# "$@"
+          nixos-rebuild switch --sudo --flake .# || true
 
           echo
         }
