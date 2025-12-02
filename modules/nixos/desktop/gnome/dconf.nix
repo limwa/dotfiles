@@ -16,6 +16,14 @@
               restore-session = false;
             };
 
+            "org/gnome/mutter" = {
+              # Enable fractional scaling for HiDPI screens
+              experimental-features = [
+                "scale-monitor-framebuffer"
+                "xwayland-native-scaling"
+              ];
+            };
+
             "org/gnome/desktop/background" = {
               picture-options = "zoom";
               picture-uri = "file://${self}/backgrounds/montclair_light.webp";
