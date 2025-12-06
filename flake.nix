@@ -214,7 +214,7 @@
           ./modules/nixos/development/ccache.nix
           ./modules/nixos/development/documentation.nix
           ./modules/nixos/development/emulated-systems.nix
-          ./modules/nixos/development/nixd.nix
+          ./modules/nixos/development/nix-lsp.nix
           ./modules/nixos/hardware/firmware.nix
           ./modules/nixos/hardware/printing.nix
           ./modules/nixos/hardware/tlp.nix
