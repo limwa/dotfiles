@@ -16,6 +16,7 @@
     discord
     eclipses.eclipse-modeling
     fractal
+    gimp-with-plugins
     gnome-boxes
     google-chrome
     gthumb
