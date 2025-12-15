@@ -27,7 +27,7 @@
     gnomeExtensions.applications-menu
     gnomeExtensions.astra-monitor
     gnomeExtensions.dash-to-dock
-    # gnomeExtensions.media-controls
+    gnomeExtensions.media-controls
     gnomeExtensions.tiling-shell
     gnomeExtensions.vicinae
   ];
