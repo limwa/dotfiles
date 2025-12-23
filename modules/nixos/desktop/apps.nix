@@ -22,7 +22,7 @@
     gthumb
     imagemagick
     jetbrains-toolbox
-    jetbrains.idea-ultimate
+    jetbrains.idea
     libreoffice
     slack
     spotify
