@@ -1,4 +1,8 @@
-{pkgs, ...}: {
+{
+  pkgs,
+  lib,
+  ...
+}: {
   imports = [
     ../default.nix
     ./dconf.nix
@@ -8,7 +12,7 @@
   services.desktopManager.gnome.enable = true;
 
   # KDE Connect on GNOME
-  programs.kdeconnect.package = pkgs.gnomeExtensions.gsconnect;
+  programs.kdeconnect.package = lib.mkForce pkgs.gnomeExtensions.gsconnect;
 
   environment.variables = {
     # Needed for Astra Monitor
