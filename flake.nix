@@ -3,7 +3,7 @@
 
   inputs = {
     # Nixpkgs (NixOS unstable)
-    nixpkgs.url = "github:limwa/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:limwa/nixpkgs/dotfiles";
 
     # Agenix
     agenix.url = "github:ryantm/agenix";
@@ -210,7 +210,6 @@
           ./modules/nixos/audio
           ./modules/nixos/audio/soundwire.nix
           ./modules/nixos/desktop/gnome
-          ./modules/nixos/desktop/kde
           ./modules/nixos/development/adb.nix
           ./modules/nixos/development/ccache.nix
           ./modules/nixos/development/documentation.nix
