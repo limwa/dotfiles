@@ -17,7 +17,7 @@
   # Use the latest NVIDIA drivers. Beta and stable drivers are available too.
   hardware.nvidia =
     {
-      package = config.boot.kernelPackages.nvidiaPackages.beta;
+      package = config.boot.kernelPackages.nvidiaPackages.production;
     }
     // lib.optionalAttrs (useOpenNvidiaDrivers != null) {
       open = useOpenNvidiaDrivers;
