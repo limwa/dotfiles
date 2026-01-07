@@ -18,7 +18,7 @@
           monitor.alsa.rules = [
             {
               matches = [
-                {node.name = "~alsa_input.*Internal Mic.*";}
+                {node.name = "~alsa_input.*\\.analog-stereo";}
               ];
               actions = {
                 update-props = {
