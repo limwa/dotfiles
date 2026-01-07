@@ -11,6 +11,26 @@
     alsa.enable = true;
     alsa.support32Bit = true;
     pulse.enable = true;
-    wireplumber.enable = true;
+    wireplumber = {
+      enable = true;
+      extraConfig = {
+        "95-disable-mic-boost" = {
+          monitor.alsa.rules = [
+            {
+              matches = [
+                {node.name = "~alsa_input.*Internal Mic.*";}
+              ];
+              actions = {
+                update-props = {
+                  # Prevent WirePlumber from mapping the "boost" control to
+                  # the policy volume; these property names depend on your card
+                  "node.volume-controls" = ["Capture"];
+                };
+              };
+            }
+          ];
+        };
+      };
+    };
   };
 }
