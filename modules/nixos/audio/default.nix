@@ -15,10 +15,10 @@
       enable = true;
       extraConfig = {
         "95-disable-mic-boost" = {
-          monitor.alsa.rules = [
+          "monitor.alsa.rules" = [
             {
               matches = [
-                {node.name = "~alsa_input.*\\.analog-stereo";}
+                {"node.name" = "~alsa_input.*.analog-stereo";}
               ];
               actions = {
                 update-props = {
