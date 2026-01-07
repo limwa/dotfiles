@@ -11,8 +11,8 @@
   # Automatically configure the Flathub remote.
   systemd.services.flatpak-repo = {
     wantedBy = ["multi-user.target"];
-    wants = ["network-online.target"];
-    after = ["network-online.target"];
+    wants = ["NetworkManager-wait-online.service"];
+    after = ["NetworkManager-wait-online.service"];
 
     path = [pkgs.flatpak];
     script = ''
