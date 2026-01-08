@@ -5,6 +5,10 @@
   # Enable sound with pipewire.
   security.rtkit.enable = true;
 
+  boot.extraModprobeConfig = ''
+    options snd-hda-intel model=alc257-lenovo
+  '';
+
   services.pipewire = {
     enable = true;
     audio.enable = true;
@@ -22,9 +26,6 @@
               ];
               actions = {
                 update-props = {
-                  # Prevent WirePlumber from mapping the "boost" control to
-                  # the policy volume; these property names depend on your card
-                  "api.alsa.soft-mixer" = true;
                 };
               };
             }
