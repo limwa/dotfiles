@@ -24,7 +24,7 @@
                 update-props = {
                   # Prevent WirePlumber from mapping the "boost" control to
                   # the policy volume; these property names depend on your card
-                  "node.volume-controls" = ["Capture"];
+                  "api.alsa.soft-mixer" = true;
                 };
               };
             }
