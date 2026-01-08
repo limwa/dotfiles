@@ -6,7 +6,7 @@
   security.rtkit.enable = true;
 
   boot.extraModprobeConfig = ''
-    options snd-hda-intel model=auto
+    options snd_hda_intel model=auto
     options snd_hda_intel dmic_detect=0"
   '';
 
