@@ -5,15 +5,9 @@
   # Enable sound with pipewire.
   security.rtkit.enable = true;
 
-  boot.extraModprobeConfig = ''
-    options snd-hda-intel model=auto
-  '';
-
   services.pipewire = {
     enable = true;
     audio.enable = true;
-    alsa.enable = true;
-    alsa.support32Bit = true;
     pulse.enable = true;
     wireplumber = {
       enable = true;
