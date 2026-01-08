@@ -6,7 +6,7 @@
   security.rtkit.enable = true;
 
   boot.extraModprobeConfig = ''
-    options snd-hda-intel model=alc257-lenovo
+    options snd-hda-intel model=auto
   '';
 
   services.pipewire = {
