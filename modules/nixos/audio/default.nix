@@ -26,7 +26,8 @@
               ];
               actions = {
                 update-props = {
-                  "device.profile" = "pro-audio";
+                  "api.alsa.use-ucm" = false;
+                  "api.alsa.soft-mixer" = true;
                 };
               };
             }
