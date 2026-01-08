@@ -22,7 +22,7 @@
           "monitor.alsa.rules" = [
             {
               matches = [
-                {"node.name" = "~alsa_input.*.analog-stereo";}
+                {"node.name" = "~alsa_input.*";}
               ];
               actions = {
                 update-props = {
