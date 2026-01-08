@@ -22,11 +22,14 @@
           "monitor.alsa.rules" = [
             {
               matches = [
-                {"node.name" = "~alsa_input.*";}
+                {
+                  "device.name" = "~alsa_card.*";
+                  "device.vendor.id" = "0x1022";
+                  "device.product.id" = "0x15e3";
+                }
               ];
               actions = {
                 update-props = {
-                  "api.alsa.use-ucm" = false;
                   "api.alsa.soft-mixer" = true;
                 };
               };
