@@ -26,6 +26,7 @@
               ];
               actions = {
                 update-props = {
+                  "device.profile" = "pro-audio";
                 };
               };
             }
