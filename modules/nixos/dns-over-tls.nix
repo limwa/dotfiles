@@ -7,9 +7,12 @@
   services.resolved = {
     enable = true;
 
-    fallbackDns = ["1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one"];
-
-    dnssec = "allow-downgrade";
-    dnsovertls = "opportunistic";
+    settings = {
+      Resolve = {
+        FallbackDNS = ["1.1.1.1#one.one.one.one" "1.0.0.1#one.one.one.one"];
+        DNSSEC = "allow-downgrade";
+        DNSOverTLS = "opportunistic";
+      };
+    };
   };
 }
