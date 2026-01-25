@@ -355,11 +355,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1769367901,
-        "narHash": "sha256-UgOM9Ax+K7trVBDSh63UerkftJIsGgjsJMM+rWVOYVc=",
+        "lastModified": 1769368652,
+        "narHash": "sha256-OMvrVfdJfqxefcxg03LlaPod7xy4My55zP901ydZYv8=",
         "owner": "limwa",
         "repo": "nixpkgs",
-        "rev": "6234820120db52e9acc62f49abb5796dd3b3309b",
+        "rev": "cafd0366266845827d8bb87c6d60d7caa729c028",
         "type": "github"
       },
       "original": {
