@@ -247,6 +247,7 @@
           ./modules/home-manager/gh.nix
           ./modules/home-manager/ghostty.nix
           ./modules/home-manager/git.nix
+          ./modules/home-manager/jujutsu.nix
           ./modules/home-manager/ssh.nix
           ./modules/home-manager/variables.nix
           ./modules/home-manager/vicinae.nix
