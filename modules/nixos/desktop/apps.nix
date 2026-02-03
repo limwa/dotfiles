@@ -24,6 +24,7 @@
     jetbrains-toolbox
     jetbrains.idea
     libreoffice
+    opencode
     slack
     spotify
     vscode
