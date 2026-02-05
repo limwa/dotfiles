@@ -9,7 +9,6 @@ in {
   imports = [
     "${nixos-hardware}/common/cpu/amd"
     "${nixos-hardware}/common/cpu/amd/pstate.nix"
-    "${nixos-hardware}/common/cpu/amd/zenpower.nix"
     "${nixos-hardware}/common/gpu/nvidia/ampere"
     "${nixos-hardware}/common/gpu/nvidia/prime.nix"
     "${nixos-hardware}/common/pc/laptop"
