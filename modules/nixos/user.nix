@@ -10,7 +10,5 @@
     extraGroups = ["wheel"];
 
     initialPassword = lib.mkDefault initialPassword;
-
-    linger = true;
   };
 }
