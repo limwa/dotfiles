@@ -1,0 +1,80 @@
+name: Build configurations
+on:
+  push:
+    branches:
+      - update_flake_lock_action
+  workflow_dispatch: # Allows manual triggering
+
+concurrency:
+  group: build-configurations
+  cancel-in-progress: true
+
+jobs:
+  prepare:
+    name: Prepare
+    runs-on: ubuntu-latest
+    
+    outputs:
+      matrix: ${{ steps.matrix.outputs.matrix }}
+
+    steps:
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Collect host URIs to build
+        id: hosts
+        run: |
+          echo "uris=$(nix eval --json .#meta.hosts | jq -c 'map(".#nixosConfigurations.\(.).config.system.build.toplevel")')" >> $GITHUB_OUTPUT
+
+      - name: Compose build matrix
+        id: matrix
+        uses: ./.github/actions/compose-build-matrix
+        with:
+          flake-uris: ${{ join(fromJson(steps.hosts.outputs.uris)) }}
+
+  build:
+    name: Build on ${{ matrix.spec.system }}
+    environment: attic-rw
+
+    needs: [prepare]
+
+    strategy:
+      fail-fast: false
+      matrix:
+        spec: ${{ fromJSON(needs.prepare.outputs.matrix) }}
+
+    runs-on: >-
+      ${{ (matrix.spec.system == 'x86_64-linux' && 'ubuntu-latest')
+      || (matrix.spec.system == 'aarch64-linux' && 'ubuntu-24.04-arm')
+      || (matrix.spec.system == 'x86_64-darwin' && 'macos-latest')
+      || (matrix.spec.system == 'aarch64-darwin' && 'macos-latest') }}
+
+    steps:
+      - name: Install Nix
+        uses: DeterminateSystems/nix-installer-action@main
+
+      - name: Checkout repository
+        uses: actions/checkout@v6
+
+      - name: Set up Attic
+        uses: ./.github/actions/setup-attic
+        with:
+          endpoint: ${{ vars.ATTIC_ENDPOINT }}
+          cache: ${{ vars.ATTIC_CACHE }}
+          token: ${{ secrets.ATTIC_TOKEN }}
+
+      - name: Create temporary directory for build results
+        run: |
+          TMPDIR="$(mktemp -d)"
+          echo "TMPDIR=$TMPDIR" >> $GITHUB_ENV
+          
+      - name: Build configurations
+        run: |
+          nix build -j1 --fallback --out-link "$TMPDIR/result" ${{ join(matrix.spec.uris, ' ') }}
+
+      - name: Push to cache
+        run: |
+          find "$TMPDIR" -name 'result*' -type l -exec attic push dotfiles {} \+;

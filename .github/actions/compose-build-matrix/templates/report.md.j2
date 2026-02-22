@@ -1,0 +1,18 @@
+## Evaluation report
+
+{% if errors|length == 0 %}
+:white_check_mark: No errors were found while evaluating the flake URIs.
+{% else %}
+:x: There were errors while evaluating the following flake URIs:
+
+{% for err in errors %}
+<details>
+  <summary>
+    <code>{{ err.uri }}</code>
+  </summary>
+  <pre>
+{{ err.stderr.replace('\n\n', '\n<br>\n') }}
+  </pre>
+</details>
+{% endfor %}
+{% endif %}

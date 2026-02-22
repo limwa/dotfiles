@@ -39,6 +39,9 @@
 
     # Flake Utils
     utils.url = "github:limwa/nix-flake-utils";
+
+    # Needed for shell.nix
+    flake-compat.url = "github:edolstra/flake-compat";
   };
 
   outputs = {
@@ -52,7 +55,7 @@
     utils.lib.mkFlakeWith {
       forEachSystem = system: {
         inherit system;
-        self = utils.lib.forSystem self system;
+        outputs = utils.lib.forSystem self system;
         pkgs = import nixpkgs {inherit system;};
       };
     } {
@@ -300,6 +303,44 @@
             # useOpenNvidiaDrivers = false;
           };
         };
+
+        lol = mkSystem "aarch64-linux" {
+          modules = [
+            ./hosts/lol/configuration.nix
+          ];
+
+          specialArgs = {
+            useLatestKernel = false;
+            # useOpenNvidiaDrivers = false;
+          };
+        };
+
+        another = mkSystem "x86_64-linux" {
+          modules = [
+            ./hosts/AAAAAAAA/configuration.nix
+          ];
+
+          specialArgs = {
+            useLatestKernel = false;
+            # useOpenNvidiaDrivers = false;
+          };
+        };
+      };
+
+      devShells = utils.lib.invokeAttrs {
+        default = {outputs, ...}: outputs.devShells.python;
+
+        # Python development shell
+        python = { pkgs, ... }:
+          pkgs.mkShell {
+            meta.description = "A development shell with Python";
+
+            packages = with pkgs; [
+              (python3.withPackages (ps: [
+                ps.jinja2
+              ]))
+            ];
+          };
       };
     };
 }

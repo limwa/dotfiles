@@ -35,7 +35,7 @@ jobs:
         run: |
           nix flake update nixpkgs
           git diff --quiet && exit 1 || exit 0
-      
+
       - name: Restore initial repository state
         run: git reset --hard HEAD
 
@@ -46,7 +46,7 @@ jobs:
           commit-msg: "build: update flake.lock"   # Commit message to be used
           pr-title: "build: update flake.lock" # Title of PR to be created
           pr-assignees: limwa # Assign me to the PR
-      
+
       - name: Create placeholder summary comment
         uses: thollander/actions-comment-pull-request@v3
         with:

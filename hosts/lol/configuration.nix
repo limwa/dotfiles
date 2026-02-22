@@ -1,0 +1,21 @@
+{
+  imports = [
+    ./hardware-configuration.nix
+    ./disk-configuration.nix
+    ./state-configuration.nix
+
+    ../../modules/nixos/agenix.nix
+    ../../modules/nixos/audio/bluetooth.nix
+    ../../modules/nixos/hardware/graphics/amdgpu.nix
+    ../../modules/nixos/hardware/graphics/nvidia.nix
+    ../../modules/nixos/hardware/thunderbolt.nix
+    ../../modules/nixos/virtualization/podman/nvidia.nix
+    ../../modules/nixos/secureboot/enforce.nix
+    ./modules/hardware.nix
+  ];
+
+  # For windows compatibility
+  time.hardwareClockInLocalTime = true;
+
+  networking.hostName = "AAAAAAAA";
+}

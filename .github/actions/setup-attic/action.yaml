@@ -1,0 +1,31 @@
+name: Set up Attic
+description: Set up the Attic CLI tool for caching Nix builds
+
+inputs:
+  endpoint:
+    description: The Attic API endpoint
+    required: true
+  cache:
+    description: The name of the Attic cache to use
+    required: true
+  token:
+    description: The Attic API token for authentication
+    required: true
+    
+runs:
+  using: composite
+  steps:
+    - name: Install the Attic CLI tool from Nixpkgs
+      shell: bash
+      run: |
+        nix profile add nixpkgs#attic-client
+        
+    - name: Login to the Attic cache
+      shell: bash
+      run: |
+        attic login --set-default main "${{ inputs.endpoint }}" "${{ inputs.token }}"
+        
+    - name: Use provided cache by default
+      shell: bash
+      run: |
+        attic use "${{ inputs.cache }}"

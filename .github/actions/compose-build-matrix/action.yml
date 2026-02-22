@@ -1,0 +1,26 @@
+name: Compose Nix Build Matrix
+description: Evaluates flake URIs to determine build systems and groups them by build platform
+
+inputs:
+  flake-uris:
+    description: Newline-separated list of flake URIs to evaluate
+    required: true
+
+outputs:
+  matrix:
+    description: JSON array of system groups with their flake URIs
+    value: ${{ steps.run.outputs.matrix }}
+
+runs:
+  using: composite
+  steps:
+    - id: run
+      shell: bash
+      run: |
+        TMPDIR="$(mktemp -d)"
+        ${{ github.action_path }}/action.py --outdir "$TMPDIR"
+        
+        cat "$TMPDIR/report.md" >> "$GITHUB_STEP_SUMMARY"
+        echo "matrix=$(cat "$TMPDIR/matrix.json")" >> $GITHUB_OUTPUT
+      env:
+        INPUT_FLAKE_URIS: ${{ inputs.flake-uris }}
