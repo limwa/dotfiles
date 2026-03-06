@@ -296,8 +296,8 @@
           ];
 
           specialArgs = {
-            useLatestKernel = false;
-            # useOpenNvidiaDrivers = false;
+            useLatestKernel = true;
+            useOpenNvidiaDrivers = true;
           };
         };
       };
