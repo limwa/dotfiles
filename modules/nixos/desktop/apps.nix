@@ -6,32 +6,40 @@
   # Install firefox.
   programs.firefox.enable = true;
 
+  # Enable wireshark.
+  programs.wireshark.enable = true;
+
   # Accept Android SDK licenses
   nixpkgs.config.android_sdk.accept_license = true;
 
   # User-scoped apps
-  users.users.${user.login}.packages = with pkgs; [
-    android-studio
-    code-cursor
-    discord
-    eclipses.eclipse-modeling
-    fractal
-    gimp-with-plugins
-    gnome-boxes
-    google-chrome
-    gthumb
-    imagemagick
-    jetbrains-toolbox
-    jetbrains.idea
-    libreoffice
-    opencode
-    slack
-    spotify
-    vscode
-    yaak
-    yt-dlp
-    zed-editor
-    zotero
-    custom.tableplus
-  ];
+  users.users.${user.login} = {
+    # Allow user to run wireshark without sudo
+    extraGroups = ["wireshark"];
+
+    packages = with pkgs; [
+      android-studio
+      code-cursor
+      discord
+      eclipses.eclipse-modeling
+      fractal
+      gimp-with-plugins
+      gnome-boxes
+      google-chrome
+      gthumb
+      imagemagick
+      jetbrains-toolbox
+      jetbrains.idea
+      libreoffice
+      opencode
+      slack
+      spotify
+      vscode
+      yaak
+      yt-dlp
+      zed-editor
+      zotero
+      custom.tableplus
+    ];
+  };
 }
