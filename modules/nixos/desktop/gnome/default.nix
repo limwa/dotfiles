@@ -35,4 +35,8 @@
     gnomeExtensions.tiling-shell
     gnomeExtensions.vicinae
   ];
+
+  nixpkgs.overlays = [
+    (import ../../../../overlays/gnomeExtensions.nix)
+  ];
 }
