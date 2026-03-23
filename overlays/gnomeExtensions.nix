@@ -6,8 +6,8 @@ final: prev: {
         src = final.fetchFromGitHub {
           owner = "micheleg";
           repo = "dash-to-dock";
-          rev = "0f21b6b9baf504d6e6972e9ea8041240ceadfdc9";
-          hash = "sha256-F4k5fUpbqFt86F5ylkX5TznfChN62tzEYBiDO7e81Vw=";
+          rev = "69c6ee5c7669b0a3b0077467cdbbcf3b39ddc44a";
+          hash = "sha256-/zQpiMDGLsBtPSn1KV2CLqb3cFMJo34qrrJW0UXNRlo=";
         };
       };
     };
