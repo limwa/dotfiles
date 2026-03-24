@@ -6,6 +6,9 @@
     else "us";
 
   # GTK requires an input method to support accented characters
-  i18n.inputMethod.enable = true;
-  i18n.inputMethod.type = "ibus";
+  i18n.inputMethod = {
+    enable = true;
+    type = "ibus";
+    ibus.waylandFrontend = true;
+  };
 }
