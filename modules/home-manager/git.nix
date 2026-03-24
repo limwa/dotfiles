@@ -22,6 +22,7 @@ in {
 
       signing = {
         key = lib.mkDefault user.signingKey;
+        format = "openpgp";
         signByDefault = true;
       };
 
