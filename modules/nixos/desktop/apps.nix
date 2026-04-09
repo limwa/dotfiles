@@ -20,6 +20,7 @@
     packages = with pkgs; [
       android-studio
       code-cursor
+      codex
       discord
       eclipses.eclipse-modeling
       fractal
