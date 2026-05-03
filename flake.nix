@@ -37,9 +37,6 @@
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
 
-    nix-t3code.url = "github:limwa/nix-t3code";
-    nix-t3code.inputs.nixpkgs.follows = "nixpkgs";
-
     # Flake Utils
     utils.url = "github:limwa/nix-flake-utils";
   };

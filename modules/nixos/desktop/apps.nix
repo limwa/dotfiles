@@ -1,7 +1,6 @@
 {
   pkgs,
   user,
-  self,
   ...
 }: {
   # Install firefox.
@@ -42,7 +41,6 @@
       zed-editor
       zotero
       custom.tableplus
-      self.inputs.nix-t3code.packages.${pkgs.stdenv.hostPlatform.system}.t3code-nightly
     ];
   };
 }
