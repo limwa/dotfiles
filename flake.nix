@@ -223,7 +223,7 @@
           ./modules/nixos/virtualization/libvirt.nix
           ./modules/nixos/virtualization/virtualbox.nix
           ./modules/nixos/bootloader.nix
-          ./modules/nixos/cloudflared.nix
+          ./modules/nixos/cloudflare-warp.nix
           ./modules/nixos/common.nix
           ./modules/nixos/dns-over-tls.nix
           ./modules/nixos/dynamic-binaries.nix
