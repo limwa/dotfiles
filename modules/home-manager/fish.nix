@@ -5,7 +5,6 @@
 }: {
   # Use fish as the default shell.
   programs.fish.enable = true;
-  users.users.${user.login}.shell = pkgs.fish;
 
   home-manager.users.${user.login} = {
     programs.fish = {
@@ -21,20 +20,20 @@
       shellInit = ''
         set fish_greeting
       '';
-
-      plugins = with pkgs.fishPlugins; [
-        z
-        plugin-git
-        autopair
-        puffer
-        sponge
-        done
-        pure
-        fish-you-should-use
-        colored-man-pages
-        plugin-sudope
-        fzf-fish
-      ];
     };
   };
+
+  environment.systemPackages = with pkgs.fishPlugins; [
+    z
+    plugin-git
+    autopair
+    puffer
+    sponge
+    done
+    pure
+    fish-you-should-use
+    colored-man-pages
+    plugin-sudope
+    fzf-fish
+  ];
 }

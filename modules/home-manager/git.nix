@@ -3,8 +3,7 @@
   pkgs,
   lib,
   ...
-}: let
-in {
+}: {
   home-manager.users.${user.login} = {
     # Git
     # https://mynixos.com/home-manager/options/programs.git
