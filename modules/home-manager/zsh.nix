@@ -9,8 +9,12 @@
       shellAliases = {
         dotfiles = "code $HOME/dotfiles";
         nixpkgs = "code /run/current-system/nixpkgs";
-        nix = "noglob nix";
       };
+
+      setOptions = [
+        # Make it so # ~ ^ are not treated as special characters in glob patterns
+        "NO_EXTENDED_GLOB"
+      ];
 
       antidote = {
         enable = true;
