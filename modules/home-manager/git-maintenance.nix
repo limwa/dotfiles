@@ -86,7 +86,7 @@
                         continue
                       fi
                      
-                      if ! git rev-parse --git-dir > /dev/null 2>&1; then
+                      if ! git -C "$REAL_PATH" rev-parse --git-dir > /dev/null 2>&1; then
                         echo "Warning: Target $REAL_PATH of link $link is not a git repository. Skipping."
                         continue
                       fi
