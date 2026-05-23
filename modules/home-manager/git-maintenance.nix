@@ -76,8 +76,8 @@
                   TMP_FILE="$CONFIG_FILE.tmp"
                   echo "# Generated automatically by systemd" > "$TMP_FILE"
 
-                  mkdir -p "$HOME/.git-maintenance"
-                  for link in "$HOME/.git-maintenance"/*; do
+                  mkdir -p "$MAINTENANCE_DIR"
+                  for link in "$MAINTENANCE_DIR"/*; do
                     if [ -L "$link" ]; then
                       REAL_PATH="$(readlink -e "$link" || true)"
 
