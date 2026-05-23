@@ -3,7 +3,8 @@
   system,
   pkgs,
   ...
-}: {
+}:
+{
   # Nix Alien is used to run unpatched dynamic binaries on NixOS.
   # https://github.com/thiagokokada/nix-alien
 

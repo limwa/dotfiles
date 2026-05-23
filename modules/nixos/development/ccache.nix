@@ -1,10 +1,11 @@
-{config, ...}: {
+{ config, ... }:
+{
   # CCache
   # https://nixos.wiki/wiki/CCache
 
   programs.ccache.enable = true;
 
-  nix.settings.extra-sandbox-paths = [config.programs.ccache.cacheDir];
+  nix.settings.extra-sandbox-paths = [ config.programs.ccache.cacheDir ];
 
   nixpkgs.overlays = [
     (self: super: {
@@ -33,20 +34,20 @@
       };
     })
     /*
-      (
-      self: super: let
-        withCachedStdenv = drv:
-          drv.override (prev: {
-            stdenv = self.ccacheStdenv.override {
-              inherit (prev) stdenv;
-            };
+        (
+        self: super: let
+          withCachedStdenv = drv:
+            drv.override (prev: {
+              stdenv = self.ccacheStdenv.override {
+                inherit (prev) stdenv;
+              };
+            });
+        in {
+          libreoffice = super.libreoffice.override (prev: {
+            unwrapped = withCachedStdenv prev.unwrapped;
           });
-      in {
-        libreoffice = super.libreoffice.override (prev: {
-          unwrapped = withCachedStdenv prev.unwrapped;
-        });
-      }
-    )
+        }
+      )
     */
   ];
 }

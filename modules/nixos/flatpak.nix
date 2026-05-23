@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # Flatpak
   # https://nixos.wiki/wiki/Flatpak
 
@@ -10,11 +11,11 @@
 
   # Automatically configure the Flathub remote.
   systemd.services.flatpak-repo = {
-    wantedBy = ["multi-user.target"];
-    wants = ["NetworkManager-wait-online.service"];
-    after = ["NetworkManager-wait-online.service"];
+    wantedBy = [ "multi-user.target" ];
+    wants = [ "NetworkManager-wait-online.service" ];
+    after = [ "NetworkManager-wait-online.service" ];
 
-    path = [pkgs.flatpak];
+    path = [ pkgs.flatpak ];
     script = ''
       flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
     '';

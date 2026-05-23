@@ -2,7 +2,8 @@
   user,
   lib,
   ...
-}: {
+}:
+{
   home-manager.users.${user.login} = {
     programs.jujutsu = {
       enable = true;
@@ -14,9 +15,28 @@
         };
 
         aliases = {
-          tug = ["bookmark" "move" "--from" "heads(::@- & bookmarks())" "--to" "@"];
-          tug- = ["bookmark" "move" "--from" "heads(::@- & bookmarks())" "--to" "@-"];
-          mine = ["bookmark" "list" "-r" "mine()"];
+          tug = [
+            "bookmark"
+            "move"
+            "--from"
+            "heads(::@- & bookmarks())"
+            "--to"
+            "@"
+          ];
+          tug- = [
+            "bookmark"
+            "move"
+            "--from"
+            "heads(::@- & bookmarks())"
+            "--to"
+            "@-"
+          ];
+          mine = [
+            "bookmark"
+            "list"
+            "-r"
+            "mine()"
+          ];
         };
       };
     };

@@ -3,7 +3,8 @@
   self,
   lib,
   ...
-}: {
+}:
+{
   programs.dconf = {
     enable = true;
 

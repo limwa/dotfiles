@@ -2,11 +2,12 @@
   pkgs,
   wireguard,
   ...
-}: {
+}:
+{
   # Wireguard
   # https://wiki.nixos.org/wiki/WireGuard#Setting_up_WireGuard_with_NetworkManager
 
-  environment.systemPackages = [pkgs.reaction];
+  environment.systemPackages = [ pkgs.reaction ];
 
   systemd.network = {
     enable = true;
@@ -25,15 +26,15 @@
       logRefusedPackets = true;
 
       /*
-      extraCommands = ''
-        ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --sport ${wireguard.port} -j RETURN
-        ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --dport ${wireguard.port} -j RETURN
-      '';
+        extraCommands = ''
+          ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --sport ${wireguard.port} -j RETURN
+          ip46tables -t mangle -I nixos-fw-rpfilter -p udp -m udp --dport ${wireguard.port} -j RETURN
+        '';
 
-      extraStopCommands = ''
-        ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --sport ${wireguard.port} -j RETURN || true
-        ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --dport ${wireguard.port} -j RETURN || true
-      '';
+        extraStopCommands = ''
+          ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --sport ${wireguard.port} -j RETURN || true
+          ip46tables -t mangle -D nixos-fw-rpfilter -p udp -m udp --dport ${wireguard.port} -j RETURN || true
+        '';
       */
     };
   };

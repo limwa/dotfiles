@@ -2,9 +2,11 @@
   lib,
   self,
   ...
-}: let
+}:
+let
   home-manager = self.inputs.home-manager;
-in {
+in
+{
   # Home Manager
   # https://nixos.wiki/wiki/Home_Manager
 

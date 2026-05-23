@@ -2,7 +2,8 @@
   pkgs,
   user,
   ...
-}: {
+}:
+{
   home-manager.users.${user.login} = {
     # Use gh to manage GitHub repositories.
     # https://mynixos.com/home-manager/options/programs.gh

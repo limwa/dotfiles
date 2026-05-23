@@ -2,7 +2,8 @@
   user,
   pkgs,
   ...
-}: {
+}:
+{
   # Enable networking.
   networking.networkmanager = {
     enable = true;
@@ -18,7 +19,7 @@
     ];
   };
 
-  users.users.${user.login}.extraGroups = ["networkmanager"];
+  users.users.${user.login}.extraGroups = [ "networkmanager" ];
 
   # Fix for L2TP VPN crashing when establishing connection.
   services.strongswan.enable = true;

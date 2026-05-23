@@ -3,11 +3,12 @@
   lib,
   useOpenNvidiaDrivers,
   ...
-}: {
+}:
+{
   # Nvidia
   # https://nixos.wiki/wiki/Nvidia
 
-  imports = [./.];
+  imports = [ ./. ];
 
   nixpkgs.config.allowUnfree = true;
 
@@ -15,13 +16,12 @@
   services.displayManager.defaultSession = lib.mkDefault "gnome";
 
   # Use the latest NVIDIA drivers. Beta and stable drivers are available too.
-  hardware.nvidia =
-    {
-      package = config.boot.kernelPackages.nvidiaPackages.beta;
-    }
-    // lib.optionalAttrs (useOpenNvidiaDrivers != null) {
-      open = useOpenNvidiaDrivers;
-    };
+  hardware.nvidia = {
+    package = config.boot.kernelPackages.nvidiaPackages.beta;
+  }
+  // lib.optionalAttrs (useOpenNvidiaDrivers != null) {
+    open = useOpenNvidiaDrivers;
+  };
 
   # Create specializations for Sync mode.
   # specialisation = lib.mkIf (config.hardware.nvidia.prime.offload.enable) {

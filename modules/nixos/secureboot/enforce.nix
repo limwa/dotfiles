@@ -2,9 +2,11 @@
   lib,
   self,
   ...
-}: let
+}:
+let
   lanzaboote = self.inputs.lanzaboote;
-in {
+in
+{
   # Secure Boot (ready to be enforced)
   # https://nixos.wiki/wiki/Secure_Boot
 

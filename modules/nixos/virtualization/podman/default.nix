@@ -2,7 +2,8 @@
   user,
   pkgs,
   ...
-}: {
+}:
+{
   # Podman
   # https://nixos.wiki/wiki/Podman
 
@@ -25,5 +26,5 @@
   ];
 
   # Add podman group to the user.
-  users.users.${user.login}.extraGroups = ["podman"];
+  users.users.${user.login}.extraGroups = [ "podman" ];
 }

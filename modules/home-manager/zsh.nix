@@ -1,4 +1,5 @@
-{user, ...}: {
+{ user, ... }:
+{
   # Use zsh as the default shell.
   programs.zsh.enable = true;
 

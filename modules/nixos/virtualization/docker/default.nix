@@ -2,7 +2,8 @@
   user,
   pkgs,
   ...
-}: {
+}:
+{
   # Docker
   # https://nixos.wiki/wiki/Docker
 
@@ -23,5 +24,5 @@
   ];
 
   # Add docker group to the user.
-  users.users.${user.login}.extraGroups = ["docker"];
+  users.users.${user.login}.extraGroups = [ "docker" ];
 }

@@ -1,5 +1,7 @@
-{user, ...}: let
-in {
+{ user, ... }:
+let
+in
+{
   home-manager.users.${user.login} = {
     # SSH
     # https://mynixos.com/home-manager/options/programs.ssh
@@ -7,7 +9,7 @@ in {
       enable = true;
       enableDefaultConfig = false;
 
-      matchBlocks = {
+      settings = {
         # Use some default SSH options.
         "*" = {
           forwardAgent = false;

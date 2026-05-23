@@ -2,7 +2,8 @@
   user,
   pkgs,
   ...
-}: {
+}:
+{
   # Use fish as the default shell.
   programs.fish.enable = true;
 

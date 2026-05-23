@@ -1,5 +1,7 @@
-{user, ...}: let
-in {
+{ user, ... }:
+let
+in
+{
   home-manager.users.${user.login} = {
     # Delta
     # https://mynixos.com/home-manager/options/programs.delta

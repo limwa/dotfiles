@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # Fonts
   # https://nixos.wiki/wiki/Fonts
 

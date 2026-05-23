@@ -2,7 +2,8 @@
   pkgs,
   user,
   ...
-}: let
+}:
+let
   version = "1.0.1";
   system-rebuild =
     # This script will take only the changes that were added to the Git
@@ -16,12 +17,14 @@
         license = pkgs.lib.licenses.mit;
       };
 
-      derivationArgs = let
-        pname = "limwa-dotfiles-${name}";
-      in {
-        inherit pname version;
-        name = "${pname}-${version}";
-      };
+      derivationArgs =
+        let
+          pname = "limwa-dotfiles-${name}";
+        in
+        {
+          inherit pname version;
+          name = "${pname}-${version}";
+        };
 
       runtimeInputs = with pkgs; [
         libnotify
@@ -225,6 +228,7 @@
         popd
       '';
     };
-in {
-  users.users.${user.login}.packages = [system-rebuild];
+in
+{
+  users.users.${user.login}.packages = [ system-rebuild ];
 }

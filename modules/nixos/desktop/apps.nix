@@ -2,7 +2,8 @@
   pkgs,
   user,
   ...
-}: {
+}:
+{
   # Install firefox.
   programs.firefox.enable = true;
 
@@ -15,7 +16,7 @@
   # User-scoped apps
   users.users.${user.login} = {
     # Allow user to run wireshark without sudo
-    extraGroups = ["wireshark"];
+    extraGroups = [ "wireshark" ];
 
     packages = with pkgs; [
       android-studio

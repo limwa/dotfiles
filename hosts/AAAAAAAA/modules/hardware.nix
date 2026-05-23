@@ -3,9 +3,11 @@
   self,
   lib,
   ...
-}: let
+}:
+let
   nixos-hardware = self.inputs.nixos-hardware;
-in {
+in
+{
   imports = [
     "${nixos-hardware}/common/cpu/amd"
     "${nixos-hardware}/common/cpu/amd/pstate.nix"
@@ -15,7 +17,7 @@ in {
     "${nixos-hardware}/common/pc/ssd"
   ];
 
-  boot.kernelModules = ["amdgpu"];
+  boot.kernelModules = [ "amdgpu" ];
   services.xserver.videoDrivers = [
     "amdgpu"
     "nvidia"

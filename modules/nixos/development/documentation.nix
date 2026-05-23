@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # Man Pages
   # https://nixos.wiki/wiki/Man_pages
 

@@ -2,7 +2,8 @@
   pkgs,
   user,
   ...
-}: {
+}:
+{
   # Libvirt and Virt-manager
   # https://nixos.wiki/wiki/Virt-manager
 
@@ -28,5 +29,5 @@
   };
 
   # Add libvirtd group to the user.
-  users.users.${user.login}.extraGroups = ["libvirtd"];
+  users.users.${user.login}.extraGroups = [ "libvirtd" ];
 }

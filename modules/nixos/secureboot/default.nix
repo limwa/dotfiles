@@ -1,4 +1,5 @@
-{pkgs, ...}: {
+{ pkgs, ... }:
+{
   # Secure Boot (tools required for instalation)
   # https://nixos.wiki/wiki/Secure_Boot
 

@@ -1,7 +1,8 @@
-{user, ...}: {
+{ user, ... }:
+{
   # Bluetooth Audio
   # https://nixos.wiki/wiki/Bluetooth
-  imports = [./.];
+  imports = [ ./. ];
 
   hardware.bluetooth.enable = true;
 

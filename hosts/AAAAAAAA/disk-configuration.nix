@@ -16,7 +16,10 @@
                 type = "filesystem";
                 format = "vfat";
                 mountpoint = "/boot";
-                mountOptions = ["fmask=0077" "dmask=0077"];
+                mountOptions = [
+                  "fmask=0077"
+                  "dmask=0077"
+                ];
               };
             };
             swap = {
@@ -35,16 +38,19 @@
               content = {
                 type = "btrfs";
                 mountpoint = "/";
-                extraArgs = ["-f"]; # Override existing partition
+                extraArgs = [ "-f" ]; # Override existing partition
                 # Subvolumes must set a mountpoint in order to be mounted,
                 # unless their parent is mounted
                 subvolumes = {
                   "/home" = {
-                    mountOptions = ["compress=zstd:2"];
+                    mountOptions = [ "compress=zstd:2" ];
                     mountpoint = "/home";
                   };
                   "/nix" = {
-                    mountOptions = ["compress=zstd:2" "noatime"];
+                    mountOptions = [
+                      "compress=zstd:2"
+                      "noatime"
+                    ];
                     mountpoint = "/nix";
                   };
                 };

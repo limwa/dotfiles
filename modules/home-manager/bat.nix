@@ -1,4 +1,5 @@
-{user, ...}: {
+{ user, ... }:
+{
   home-manager.users.${user.login} = {
     # Use bat instead of cat.
     # https://github.com/sharkdp/bat
