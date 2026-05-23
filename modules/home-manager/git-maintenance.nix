@@ -79,15 +79,22 @@
                   mkdir -p "$HOME/.git-maintenance"
                   for link in "$HOME/.git-maintenance"/*; do
                     if [ -L "$link" ]; then
-                      REAL_PATH="$(readlink -f "$link")"
+                      REAL_PATH="$(readlink -e "$link" || true)"
+
+                      if [ -z "$REAL_PATH" ]; then
+                        echo "Warning: Link $link is broken. Removing."
+                        rm "$link"
+                        continue
+                      fi
 
                       if ! [ -d "$REAL_PATH" ]; then
-                        echo "Warning: Target $REAL_PATH of link $link is not a directory. Skipping."
+                        echo "Warning: Link $link pointing to $REAL_PATH is invalid, because it doesn't point to a directory. Removing."
+                        rm "$link"
                         continue
                       fi
                      
                       if ! git -C "$REAL_PATH" rev-parse --git-dir > /dev/null 2>&1; then
-                        echo "Warning: Target $REAL_PATH of link $link is not a git repository. Skipping."
+                        echo "Warning: Link $link pointing to $REAL_PATH is invalid because it doesn't point to a git repository. Skipping."
                         continue
                       fi
                       
