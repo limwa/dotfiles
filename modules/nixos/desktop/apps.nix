@@ -22,6 +22,7 @@
       android-studio
       code-cursor
       codex
+      devenv
       discord
       eclipses.eclipse-modeling
       fractal
