@@ -311,7 +311,7 @@
               ];
 
               specialArgs = {
-                useLatestKernel = true;
+                useLatestKernel = false;
                 useOpenNvidiaDrivers = true;
               };
             };
