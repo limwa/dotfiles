@@ -1,3 +1,4 @@
+{ lib, pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -18,4 +19,7 @@
   time.hardwareClockInLocalTime = true;
 
   networking.hostName = "AAAAAAAA";
+
+  # Temporary test for the amdgpu DP alt-mode timeout stutter.
+  boot.kernelPackages = lib.mkForce pkgs.linuxPackages_6_6;
 }
