@@ -37,12 +37,12 @@
       opencode
       slack
       spotify
+      tableplus
       vscode
       yaak
       yt-dlp
       zed-editor
       zotero
-      custom.tableplus
     ];
   };
 }

@@ -263,7 +263,6 @@
               ./modules/home-manager/variables.nix
               ./modules/home-manager/vicinae.nix
               ./modules/home-manager/zsh.nix
-              ./packages/overlay.nix
             ];
 
             mkSystem =

@@ -31,9 +31,9 @@
     gnomeExtensions.appindicator
     gnomeExtensions.applications-menu
     gnomeExtensions.astra-monitor
+    gnomeExtensions.dash-to-dock
     gnomeExtensions.media-controls
     gnomeExtensions.tiling-shell
     gnomeExtensions.vicinae
-    custom.gnomeExtensions.dash-to-dock
   ];
 }
