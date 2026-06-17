@@ -40,4 +40,7 @@ in
       default = "@saved";
     };
   };
+
+  # Workaround: https://github.com/nix-community/lanzaboote/issues/624
+  boot.bootspec.enable = lib.mkForce false;
 }
