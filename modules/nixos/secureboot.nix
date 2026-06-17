@@ -1,18 +1,23 @@
 {
   lib,
   self,
+  pkgs,
   ...
 }:
 let
   lanzaboote = self.inputs.lanzaboote;
 in
 {
-  # Secure Boot (ready to be enforced)
-  # https://nixos.wiki/wiki/Secure_Boot
+  # Secure Boot
+  # https://nix-community.github.io/lanzaboote/
 
   imports = [
     lanzaboote.nixosModules.lanzaboote
-    ./.
+  ];
+
+  environment.systemPackages = [
+    # For debugging and troubleshooting Secure Boot.
+    pkgs.sbctl
   ];
 
   # Lanzaboote currently replaces the systemd-boot module.
@@ -23,7 +28,13 @@ in
 
   boot.lanzaboote = {
     enable = true;
-    pkiBundle = "/etc/secureboot";
+    pkiBundle = "/var/lib/sbctl";
+
+    autoGenerateKeys.enable = true;
+    autoEnrollKeys = {
+      enable = true;
+      autoReboot = true;
+    };
 
     settings = {
       default = "@saved";

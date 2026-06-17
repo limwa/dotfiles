@@ -1,4 +1,3 @@
-{ lib, pkgs, ... }:
 {
   imports = [
     ./hardware-configuration.nix
@@ -11,7 +10,6 @@
     ../../modules/nixos/hardware/graphics/nvidia.nix
     ../../modules/nixos/hardware/thunderbolt.nix
     ../../modules/nixos/virtualization/podman/nvidia.nix
-    ../../modules/nixos/secureboot/enforce.nix
     ./modules/hardware.nix
   ];
 

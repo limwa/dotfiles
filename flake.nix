@@ -22,7 +22,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # Lanzaboote (doesn't follow nixpkgs to ensure stability)
-    lanzaboote.url = "github:nix-community/lanzaboote/v0.4.2";
+    lanzaboote.url = "github:nix-community/lanzaboote/v1.0.0";
     # lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
 
     # Nix Alien
@@ -224,7 +224,6 @@
               ./modules/nixos/hardware/firmware.nix
               ./modules/nixos/hardware/printing.nix
               ./modules/nixos/hardware/tlp.nix
-              ./modules/nixos/secureboot
               ./modules/nixos/virtualization/podman
               ./modules/nixos/virtualization/libvirt.nix
               ./modules/nixos/virtualization/virtualbox.nix
@@ -246,6 +245,7 @@
               ./modules/nixos/nix.nix
               ./modules/nixos/rebuild.nix
               ./modules/nixos/remote-builders.nix
+              ./modules/nixos/secureboot.nix
               ./modules/nixos/user.nix
               ./modules/nixos/wireguard.nix
               ./modules/home-manager/p10k
