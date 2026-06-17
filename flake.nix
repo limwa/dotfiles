@@ -226,7 +226,7 @@
               ./modules/nixos/hardware/tlp.nix
               ./modules/nixos/virtualization/podman
               ./modules/nixos/virtualization/libvirt.nix
-              ./modules/nixos/virtualization/virtualbox.nix
+              #./modules/nixos/virtualization/virtualbox.nix
               ./modules/nixos/boot.nix
               ./modules/nixos/bootloader.nix
               ./modules/nixos/cloudflare-warp.nix
