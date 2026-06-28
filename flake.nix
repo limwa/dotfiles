@@ -22,7 +22,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     # Lanzaboote (doesn't follow nixpkgs to ensure stability)
-    lanzaboote.url = "github:nix-community/lanzaboote/v1.0.0";
+    lanzaboote.url = "github:nix-community/lanzaboote/v1.1.0";
     # lanzaboote.inputs.nixpkgs.follows = "nixpkgs";
 
     # Nix Alien
@@ -260,6 +260,7 @@
               ./modules/home-manager/git-maintenance.nix
               ./modules/home-manager/jujutsu.nix
               ./modules/home-manager/ssh.nix
+              ./modules/home-manager/tmux.nix
               ./modules/home-manager/variables.nix
               ./modules/home-manager/vicinae.nix
               ./modules/home-manager/zsh.nix
