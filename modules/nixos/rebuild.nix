@@ -170,8 +170,8 @@ let
           echo "Rebuilding NixOS..."
           echo
 
-          nixos-rebuild boot --sudo --flake .# "$@"
-          nixos-rebuild switch --sudo --flake .# || true
+          nixos-rebuild boot --elevate=run0 --flake .# "$@"
+          nixos-rebuild switch --elevate=run0 --flake .# || true
 
           echo
         }
