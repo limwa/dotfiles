@@ -13,8 +13,5 @@
     ./modules/hardware.nix
   ];
 
-  # For windows compatibility
-  time.hardwareClockInLocalTime = true;
-
   networking.hostName = "AAAAAAAA";
 }
