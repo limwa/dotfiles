@@ -259,6 +259,7 @@
               ./modules/home-manager/git.nix
               ./modules/home-manager/git-maintenance.nix
               ./modules/home-manager/jujutsu.nix
+              ./modules/home-manager/pi.nix
               ./modules/home-manager/ssh.nix
               ./modules/home-manager/tmux.nix
               ./modules/home-manager/variables.nix
