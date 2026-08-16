@@ -33,7 +33,7 @@
       imagemagick
       jetbrains-toolbox
       jetbrains.idea
-      ladybird
+      #ladybird
       libreoffice
       opencode
       slack
