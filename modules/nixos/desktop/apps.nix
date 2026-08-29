@@ -20,7 +20,7 @@
 
     packages = with pkgs; [
       android-studio
-      code-cursor
+      chatgpt
       codex
       devenv
       discord
