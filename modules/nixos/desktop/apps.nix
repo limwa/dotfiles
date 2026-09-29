@@ -21,6 +21,7 @@
     packages = with pkgs; [
       android-studio
       chatgpt
+      claude-code
       codex
       devenv
       discord
