@@ -247,6 +247,7 @@
               ./modules/nixos/rebuild.nix
               ./modules/nixos/remote-builders.nix
               ./modules/nixos/secureboot.nix
+              ./modules/nixos/timesyncd.nix
               ./modules/nixos/user.nix
               ./modules/nixos/wireguard.nix
               ./modules/home-manager/p10k
