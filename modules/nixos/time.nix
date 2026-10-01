@@ -8,6 +8,8 @@
   # Enable chrony with NTS.
   services.chrony = {
     enable = true;
-    servers = [ "://cloudflare.com nts" ];
+    servers = [ "time.cloudflare.com" ];
+
+    enableNTS = true;
   };
 }
