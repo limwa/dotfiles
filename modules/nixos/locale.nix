@@ -1,7 +1,4 @@
 {
-  # Set the time zone.
-  time.timeZone = "Europe/Lisbon";
-
   i18n = {
     # Use English as the system language.
     defaultLocale = "en_US.UTF-8";
