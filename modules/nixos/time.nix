@@ -1,9 +1,6 @@
 {
   # Set the time zone.
-  time = {
-    timeZone = "Europe/Lisbon";
-    hardwareClockInLocalTime = true;
-  };
+  time.timeZone = "Europe/Lisbon";
 
   # Disable timesyncd.
   services.timesyncd.enable = false;
@@ -11,8 +8,13 @@
   # Enable chrony with NTS.
   services.chrony = {
     enable = true;
-    servers = [ "time.cloudflare.com port 443" ];
-
     enableNTS = true;
+
+    servers = [
+      "time.cloudflare.com"
+      "nts.netnod.se"
+      "ptbtime1.ptb.de"
+      "ptbtime2.ptb.de"
+    ];
   };
 }
