@@ -44,7 +44,7 @@
       yaak
       yt-dlp
       zed-editor
-      zotero
+      #zotero
     ];
   };
 }
