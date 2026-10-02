@@ -2,18 +2,16 @@
   "nodes": {
     "agenix": {
       "inputs": {
-        "darwin": "darwin",
-        "home-manager": "home-manager",
         "nixpkgs": [
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1790530381,
-        "narHash": "sha256-/FjF9A8HVLVftjdmz1MPA2G0wSYWRaC628NTAsCqeyI=",
+        "lastModified": 1790734419,
+        "narHash": "sha256-n7wew722m1OTBT9DOIMxNX/NF4zfsSUABAO5eW3wikE=",
         "owner": "ryantm",
         "repo": "agenix",
-        "rev": "9353cb29366a8535ac9483065284785fd48012a2",
+        "rev": "3daa710894355fa2fad8243380af373a2b4046ef",
         "type": "github"
       },
       "original": {
@@ -37,28 +35,6 @@
         "type": "github"
       }
     },
-    "darwin": {
-      "inputs": {
-        "nixpkgs": [
-          "agenix",
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1783744694,
-        "narHash": "sha256-2cp6N3rrwnGYLTx9l6N+NI+kwrCWxvJUbj5WJhvB29A=",
-        "owner": "nix-darwin",
-        "repo": "nix-darwin",
-        "rev": "c3e90c89649b07d1a96e4b9dd6cd0d6e44b91a74",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-darwin",
-        "ref": "nix-darwin-26.05",
-        "repo": "nix-darwin",
-        "type": "github"
-      }
-    },
     "direnv-instant": {
       "inputs": {
         "flake-parts": "flake-parts",
@@ -68,11 +44,11 @@
         "treefmt-nix": "treefmt-nix"
       },
       "locked": {
-        "lastModified": 1790233545,
-        "narHash": "sha256-e0N2xeZmgk8Kb++amcDVpWuObhTJdP3AV0QOKTy25G8=",
+        "lastModified": 1790838663,
+        "narHash": "sha256-6OeuX0ecQOhCPX0/mbKpSTk40LU42DYAVpxTG/L1gIk=",
         "owner": "Mic92",
         "repo": "direnv-instant",
-        "rev": "862d73ecdd61092c982e95249983b398da79f8a4",
+        "rev": "df858fdf10235bd1308314faa9735f681a0c86f2",
         "type": "github"
       },
       "original": {
@@ -178,37 +154,15 @@
     "home-manager": {
       "inputs": {
         "nixpkgs": [
-          "agenix",
           "nixpkgs"
         ]
       },
       "locked": {
-        "lastModified": 1790215976,
-        "narHash": "sha256-VkR1rMGyjU9jtw8ISFx5uqR9e+LEaOlhHwrseFkiIVk=",
+        "lastModified": 1790952078,
+        "narHash": "sha256-qbb6F3L9oD2ZPhfMPFy1gaetBCmG0AWPX9SVpa9ny/w=",
         "owner": "nix-community",
         "repo": "home-manager",
-        "rev": "a6631107a83ceab5872f298a2ea710859c80c4cb",
-        "type": "github"
-      },
-      "original": {
-        "owner": "nix-community",
-        "ref": "release-26.05",
-        "repo": "home-manager",
-        "type": "github"
-      }
-    },
-    "home-manager_2": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1790365885,
-        "narHash": "sha256-iQ0ebhiVo64NktTnwft9hNxlFu4j5cvljVxyJaEVIP4=",
-        "owner": "nix-community",
-        "repo": "home-manager",
-        "rev": "7b4c5ec4bedaf1e062bbc1bcaeddbc6bd242aa1b",
+        "rev": "199871bf7efa9d2a943c4c2c448af3680da771ac",
         "type": "github"
       },
       "original": {
@@ -288,11 +242,11 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1790321948,
-        "narHash": "sha256-mZGHLGi217oLIwzDM4PNRZeCNa6g2WBXURyXbNMFs7Y=",
+        "lastModified": 1790948122,
+        "narHash": "sha256-fDMYyzY1lI5b8RuCMrvoaIgTeRwNnTG4dNk1ucROlQE=",
         "owner": "NixOS",
         "repo": "nixos-hardware",
-        "rev": "30d48a0ec6035f8140d0125af274f0de95f1e9b5",
+        "rev": "0953bb1a609df63013176e3463393f8df993d3ef",
         "type": "github"
       },
       "original": {
@@ -332,11 +286,11 @@
     },
     "nixpkgs_3": {
       "locked": {
-        "lastModified": 1790546498,
-        "narHash": "sha256-nxJAQPAzT1Z0a8j+hIzp7h9EVLQIrr9RIIoi6lWAAv8=",
+        "lastModified": 1790894365,
+        "narHash": "sha256-0qWcYwqLQHVDGCvgKWRj07WCpclvHicNgQ2ZVEirnys=",
         "owner": "limwa",
         "repo": "nixpkgs",
-        "rev": "cec8e7a4c28ed0b19be8914d8e1f9ef3a2ffc624",
+        "rev": "b5f83e60cad34c7d01f7315774bcfea5baac3027",
         "type": "github"
       },
       "original": {
@@ -374,7 +328,7 @@
         "agenix": "agenix",
         "direnv-instant": "direnv-instant",
         "disko": "disko",
-        "home-manager": "home-manager_2",
+        "home-manager": "home-manager",
         "lanzaboote": "lanzaboote",
         "nix-alien": "nix-alien",
         "nix-index-database": "nix-index-database",
