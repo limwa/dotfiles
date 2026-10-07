@@ -20,6 +20,8 @@
 
     packages = with pkgs; [
       android-studio
+      bruno
+      bruno-cli
       chatgpt
       claude-code
       codex
