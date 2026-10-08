@@ -25,7 +25,6 @@
       chatgpt
       claude-code
       codex
-      devenv
       discord
       eclipses.eclipse-modeling
       fractal

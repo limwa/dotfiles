@@ -254,6 +254,7 @@
               ./modules/home-manager/bat.nix
               ./modules/home-manager/default-shell.nix
               ./modules/home-manager/delta.nix
+              ./modules/home-manager/devenv.nix
               ./modules/home-manager/direnv.nix
               ./modules/home-manager/fish.nix
               ./modules/home-manager/gh.nix
