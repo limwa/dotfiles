@@ -11,6 +11,10 @@
   virtualisation.podman = {
     enable = true;
 
+    extraPackages = with pkgs; [
+      podman-compose
+    ];
+
     # Enable docker compatibility.
     dockerCompat = true;
     dockerSocket.enable = true;
