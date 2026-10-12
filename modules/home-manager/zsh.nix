@@ -17,6 +17,11 @@
         "NO_EXTENDED_GLOB"
       ];
 
+      envExtra = ''
+        # Add opencode to the PATH
+        [ -e $HOME/.opencode/bin ] && export PATH=$HOME/.opencode/bin:$PATH
+      '';
+
       antidote = {
         enable = true;
 
