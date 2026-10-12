@@ -37,7 +37,6 @@
       jetbrains.idea
       #ladybird
       libreoffice
-      opencode
       slack
       spotify
       tableplus
