@@ -16,8 +16,10 @@
       };
 
       extensions = with pkgs; [
+        gh-actions-lock
         gh-dash
         gh-notify
+        gh-stack
       ];
     };
   };
