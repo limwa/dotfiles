@@ -22,7 +22,7 @@ jobs:
 
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7.0.1
         with:
           fetch-depth: 0
           fetch-tags: true
@@ -48,7 +48,7 @@ jobs:
           pr-assignees: limwa # Assign me to the PR
       
       - name: Create placeholder summary comment
-        uses: thollander/actions-comment-pull-request@v3
+        uses: thollander/actions-comment-pull-request@v3.0.1
         with:
           pr-number: ${{ steps.update.outputs.pull-request-number }}
           comment-tag: update_summary
@@ -66,7 +66,7 @@ jobs:
 
       - name: Upload update summary as comment
         if: ${{ steps.update-summary.conclusion == 'success' }}
-        uses: thollander/actions-comment-pull-request@v3
+        uses: thollander/actions-comment-pull-request@v3.0.1
         with:
           pr-number: ${{ steps.update.outputs.pull-request-number }}
           comment-tag: update_summary
@@ -74,7 +74,7 @@ jobs:
 
       - name: On error, notify user in summary comment
         if: ${{ steps.update-summary.conclusion == 'failure' }}
-        uses: thollander/actions-comment-pull-request@v3
+        uses: thollander/actions-comment-pull-request@v3.0.1
         with:
           pr-number: ${{ steps.update.outputs.pull-request-number }}
           comment-tag: update_summary
