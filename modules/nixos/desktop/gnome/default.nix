@@ -32,7 +32,7 @@
     gnomeExtensions.applications-menu
     gnomeExtensions.astra-monitor
     gnomeExtensions.dash-to-dock
-    gnomeExtensions.media-controls
+    gnomeExtensions.now-playing-card
     gnomeExtensions.tiling-shell
     gnomeExtensions.vicinae
   ];
