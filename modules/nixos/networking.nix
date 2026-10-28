@@ -15,6 +15,8 @@
     ];
   };
 
+  security.pki.certificateFiles = [ ../../files/certificates/HARICA-GEANT-TLS-R1.crt ];
+
   users.users.${user.login}.extraGroups = [ "networkmanager" ];
 
   # Fix for L2TP VPN crashing when establishing connection.
