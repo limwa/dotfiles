@@ -32,4 +32,9 @@
     enable = true;
     package = pkgs.firewalld-gui;
   };
+
+  services.mullvad-vpn = {
+    enable = true;
+    gui.enable = true;
+  };
 }
