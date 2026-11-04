@@ -30,6 +30,9 @@
 
         # Ensure Nix doesn't run out of space
         min-free = "${toString (10 * GB)}";
+
+        # Flush store paths to disk before marking them as valid.
+        sync-before-registering = true;
       };
 
       # Add my registry to the list of known registries
