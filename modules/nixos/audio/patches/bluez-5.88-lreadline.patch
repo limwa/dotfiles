@@ -1,0 +1,77 @@
+--- a/Makefile.tools
++++ b/Makefile.tools
+@@ -21,7 +21,7 @@
+ 					client/cs.h client/cs.c
+ client_bluetoothctl_LDADD = lib/libbluetooth-internal.la \
+ 			gdbus/libgdbus-internal.la src/libshared-glib.la \
+-			$(GLIB_LIBS) $(DBUS_LIBS) -lreadline
++			$(GLIB_LIBS) $(DBUS_LIBS) $(READLINE_LIBS)
+ endif
+ 
+ if ZSH_COMPLETIONS
+@@ -405,7 +405,7 @@
+ 				tools/mesh-gatt/onoff-model.c
+ tools_meshctl_LDADD = gdbus/libgdbus-internal.la src/libshared-glib.la \
+ 				lib/libbluetooth-internal.la \
+-				$(GLIB_LIBS) $(DBUS_LIBS) -ljson-c -lreadline
++				$(GLIB_LIBS) $(DBUS_LIBS) -ljson-c $(READLINE_LIBS)
+ endif
+ 
+ bin_PROGRAMS +=  tools/mesh-cfgclient
+@@ -422,7 +422,7 @@
+ 				mesh/crypto.h mesh/crypto.c
+ 
+ tools_mesh_cfgclient_LDADD = lib/libbluetooth-internal.la src/libshared-ell.la \
+-						$(ell_ldadd) -ljson-c -lreadline
++						$(ell_ldadd) -ljson-c $(READLINE_LIBS)
+ 
+ bin_PROGRAMS +=  tools/mesh-cfgtest
+ 
+@@ -507,7 +507,7 @@
+ tools_obex_client_tool_SOURCES = $(gobex_sources) $(btio_sources) \
+ 						tools/obex-client-tool.c
+ tools_obex_client_tool_LDADD = lib/libbluetooth-internal.la \
+-			       src/libshared-glib.la $(GLIB_LIBS) -lreadline
++			       src/libshared-glib.la $(GLIB_LIBS) $(READLINE_LIBS)
+ 
+ tools_obex_server_tool_SOURCES = $(gobex_sources) $(btio_sources) \
+ 						tools/obex-server-tool.c
+@@ -518,16 +518,16 @@
+ 				client/player.c
+ tools_bluetooth_player_LDADD = gdbus/libgdbus-internal.la \
+ 				src/libshared-glib.la \
+-				$(GLIB_LIBS) $(DBUS_LIBS) -lreadline
++				$(GLIB_LIBS) $(DBUS_LIBS) $(READLINE_LIBS)
+ 
+ tools_obexctl_SOURCES = tools/obexctl.c
+ tools_obexctl_LDADD = gdbus/libgdbus-internal.la src/libshared-glib.la \
+-			$(GLIB_LIBS) $(DBUS_LIBS) -lreadline
++			$(GLIB_LIBS) $(DBUS_LIBS) $(READLINE_LIBS)
+ 
+ tools_btmgmt_SOURCES = tools/btmgmt.c src/uuid-helper.c client/display.c \
+ 			client/mgmt.c
+ tools_btmgmt_LDADD = lib/libbluetooth-internal.la src/libshared-glib.la \
+-				$(GLIB_LIBS) -lreadline
++				$(GLIB_LIBS) $(READLINE_LIBS)
+ endif
+ 
+ if CUPS
+@@ -585,5 +585,5 @@
+ 
+ client_btpclient_btpclientctl_SOURCES = client/btpclient/btpclientctl.c client/display.c
+ client_btpclient_btpclientctl_LDADD = src/libshared-mainloop.la src/libshared-glib.la \
+-				lib/libbluetooth-internal.la -lreadline
++				lib/libbluetooth-internal.la $(READLINE_LIBS)
+ endif
+--- a/configure.ac
++++ b/configure.ac
+@@ -340,8 +340,7 @@
+ AM_CONDITIONAL(CLIENT, test "${enable_client}" != "no")
+ 
+ if (test "${enable_client}" != "no" || test "${enable_mesh}" = "yes"); then
+-        AC_CHECK_HEADERS(readline/readline.h, enable_readline=yes,
+-                AC_MSG_ERROR(readline header files are required))
++        PKG_CHECK_MODULES([READLINE], [readline], enable_readline=yes)
+ fi
+ AM_CONDITIONAL(READLINE, test "${enable_readline}" = "yes")
+ 
